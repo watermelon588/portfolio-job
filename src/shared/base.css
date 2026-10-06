@@ -1,0 +1,90 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  transition: opacity 0.8s ease;
+}
+
+html.is-loading body { opacity: 0; transition: none; }
+html.is-leaving body { opacity: 0; transition: opacity 0.35s ease; }
+
+img { display: block; max-width: 100%; height: auto; }
+figure { margin: 0; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button, input, textarea { font: inherit; color: inherit; background: none; border: 0; border-radius: 0; }
+button { cursor: pointer; }
+em { font-style: normal; }
+h1, h2, h3, h4 { font-weight: inherit; font-size: inherit; }
+code { font-family: var(--font-mono); font-size: 0.86em; letter-spacing: 0; }
+
+::selection { background: var(--accent); color: var(--bg); }
+
+:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+
+/* Underline that draws in on hover */
+.u {
+  background: linear-gradient(currentColor, currentColor) no-repeat right bottom / 0 1px;
+  transition: background-size 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.u:hover { background-size: 100% 1px; background-position-x: left; }
+
+.sr-only {
+  position: absolute; left: 0; top: 0; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* SplitText masks clip descenders; give them room without shifting layout. */
+[data-split] > div, [data-chars] > div > div, [data-chars] > div { padding-bottom: 0.14em; margin-bottom: -0.14em; }
+
+/* ---------- media tone (theme.<variant>.media[page]) ---------- */
+.m { overflow: hidden; }
+.m img { width: 100%; transition: filter 0.8s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+[data-tone="mono"] .m img:not([data-veil]) { filter: grayscale(1); }
+[data-tone="hover"] .m img:not([data-veil]) { filter: grayscale(1); }
+[data-tone="hover"] :is(a, .is-on):hover .m img:not([data-veil]),
+[data-tone="hover"] .is-on .m img:not([data-veil]),
+[data-tone="hover"] .m:hover img:not([data-veil]) { filter: none; }
+[data-tone="duotone"] .m img:not([data-veil]) { filter: url(#duo); }
+[data-tone="duotone"] .m:hover img:not([data-veil]),
+[data-tone="duotone"] a:hover .m img:not([data-veil]) { filter: none; }
+
+/* ---------- contact form base (variants restyle) ---------- */
+.cf { position: relative; }
+.cf-field { display: block; }
+.cf-label { display: block; }
+.cf input, .cf textarea { width: 100%; outline: none; resize: vertical; }
+.cf-foot { display: flex; align-items: baseline; gap: 20px; flex-wrap: wrap; }
+.cf[data-state="sending"] .cf-send { opacity: 0.4; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+}
+
+/* Case pages: tall posters never exceed the viewport; they centre instead. */
+.p-work .m img { width: auto; max-width: 100%; max-height: 92vh; margin-inline: auto; }
+
+/* ---------- global theme switcher (injected by boot.js) ---------- */
+.ts { position: fixed; right: 16px; bottom: 16px; z-index: 60; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
+.ts-btn, .ts-menu { background: var(--bg); color: var(--ink); border: 1px solid color-mix(in srgb, var(--ink) 22%, transparent); }
+.ts-btn { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; transition: border-color 0.3s; }
+.ts-btn:hover, .ts-btn[aria-expanded="true"] { border-color: var(--ink); }
+.ts-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; box-shadow: 0 0 0 1px color-mix(in srgb, var(--ink) 25%, transparent); }
+.ts-menu { position: absolute; right: 0; bottom: calc(100% + 8px); min-width: 190px; padding: 6px; border-radius: 12px; }
+.ts-menu a { display: flex; align-items: center; gap: 10px; padding: 9px 10px; border-radius: 8px; transition: background-color 0.2s; }
+.ts-menu a:hover { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.ts-menu a[aria-current] { background: color-mix(in srgb, var(--ink) 11%, transparent); }
+.ts-n { opacity: 0.5; }

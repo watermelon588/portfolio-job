@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Rohit Maity — Backend & AI Engineer. Python, FastAPI, Node.js, LangGraph." />
+    <link rel="icon" href="data:," />
+    <title>Rohit Maity — Backend & AI Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@200..300&family=JetBrains+Mono:wght@300&display=swap" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      :root { --bg: #f1f1ef; --ink: #161616; --muted: #8a8984; --face: rgba(241, 241, 239, 0.92); }
+      html, body { height: 100%; }
+      body {
+        background: var(--bg); color: var(--ink);
+        font: 300 14px/1.5 "Inter Tight", system-ui, sans-serif; -webkit-font-smoothing: antialiased;
+        display: grid; place-items: center; overflow: hidden;
+        transition: background-color 0.6s ease, color 0.6s ease;
+      }
+      .mono { font: 300 10.5px/1.6 "JetBrains Mono", ui-monospace, monospace; letter-spacing: 0.06em; text-transform: uppercase; }
+      .stage { display: grid; justify-items: center; gap: 44px; }
+      .scene { width: 120px; height: 120px; perspective: 700px; }
+      .die { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transform: rotateX(-24deg) rotateY(32deg); }
+      .face {
+        position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: 2px;
+        background: var(--face); border: 1px solid currentColor; backface-visibility: hidden;
+      }
+      .face b { font-weight: 200; font-size: 40px; letter-spacing: -0.04em; line-height: 1; }
+      .face .mono { font-size: 8.5px; opacity: 0.6; }
+      .face i { width: 6px; height: 6px; border-radius: 50%; margin-top: 6px; }
+      .f1 { transform: translateZ(60px); }
+      .f2 { transform: rotateY(90deg) translateZ(60px); }
+      .f3 { transform: rotateY(180deg) translateZ(60px); }
+      .f4 { transform: rotateY(-90deg) translateZ(60px); }
+      .f5 { transform: rotateX(90deg) translateZ(60px); }
+      .f6 { transform: rotateX(-90deg) translateZ(60px); }
+      .caption { text-align: center; min-height: 3.4em; }
+      .caption .name { font-size: 22px; letter-spacing: -0.03em; }
+      .top, .bottom { position: fixed; left: 16px; right: 16px; display: flex; justify-content: space-between; }
+      .top { top: 18px; } .bottom { bottom: 18px; color: var(--muted); }
+      body.is-out .stage, body.is-out .top, body.is-out .bottom { opacity: 0; transition: opacity 0.35s ease; }
+    </style>
+  </head>
+  <body>
+    <header class="top mono"><span>Rohit Maity</span><span>Backend & AI Engineer</span></header>
+
+    <main class="stage" aria-live="polite">
+      <div class="scene" aria-hidden="true"><div class="die" id="die"></div></div>
+      <p class="caption"><span class="mono" id="label">Rolling a theme</span><br /><span class="name" id="name">&nbsp;</span></p>
+    </main>
+
+    <footer class="bottom mono"><span>Five themes, one portfolio</span><span>Switch any time, bottom right</span></footer>
+
+    <noscript>
+      <p style="position:fixed;inset:auto 16px 60px;text-align:center">
+        <a href="/paper/">Paper</a> · <a href="/ledger/">Ledger</a> · <a href="/signal/">Signal</a> · <a href="/blueprint/">Blueprint</a> · <a href="/dial/">Dial</a>
+      </p>
+    </noscript>
+
+    <script type="module" src="/src/preloader.js"></script>
+  </body>
+</html>

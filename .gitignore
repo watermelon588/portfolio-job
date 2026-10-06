@@ -1,0 +1,15 @@
+# Dependencies and build output
+node_modules/
+dist/
+
+# Raw asset library (~2 GB, local only). The site uses only /site-assets.
+assets/
+
+# Design references (local only)
+inspo/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
+.vercel
