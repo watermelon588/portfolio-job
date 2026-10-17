@@ -40,6 +40,8 @@ Everything is driven from three places, so changing the site rarely means touchi
 | Colours, fonts, portrait and its filter per theme | `src/config/theme.js` |
 | Images and the résumé | `site-assets/` (folders are picked up automatically, in filename order) |
 
+All five themes use the same profile photo from `site-assets/portraits/profile.png`. Replace that file to update the portrait everywhere; each theme keeps its own portrait size and visual treatment from `src/config/theme.js`.
+
 ## Run it
 
 ```bash

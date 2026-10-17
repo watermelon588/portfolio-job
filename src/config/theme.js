@@ -4,7 +4,8 @@
  * colors   → CSS variables (--bg, --ink, --muted, --line, --accent…)
  * fonts    → `google` is the Google Fonts query (family:axes); `display`,
  *            `body`, `mono` are the CSS stacks that use them.
- * portrait → `image` is a key from assets.js `images`; `width` is any CSS size.
+ * portrait → all themes use the same `profile` image from assets.js;
+ *            `width` is any CSS size. Each theme's veil keeps its own treatment.
  *            Set image to null to hide the portrait.
  * veil     → a light "low-quality" filter on every portrait, whatever image you pick.
  *            type: "haze" | "mosaic" | "dither" | "smear" | "scribble" | "none"
@@ -23,7 +24,7 @@ export const theme = {
       body: '"Inter Tight", system-ui, sans-serif',
       mono: '"JetBrains Mono", ui-monospace, monospace',
     },
-    portrait: { image: "sunglasses05", width: "clamp(130px, 14vw, 230px)" },
+    portrait: { image: "profile", width: "clamp(130px, 14vw, 230px)" },
     veil: { type: "haze", amount: 120 },
     media: { index: "hover", work: "hover", about: "mono", contact: "mono" },
     motion: { lerp: 0.085, speed: 1 },
@@ -37,7 +38,7 @@ export const theme = {
       body: '"Archivo", system-ui, sans-serif',
       mono: '"JetBrains Mono", ui-monospace, monospace',
     },
-    portrait: { image: "sunglasses03", width: "clamp(170px, 19vw, 300px)" },
+    portrait: { image: "profile", width: "clamp(170px, 19vw, 300px)" },
     veil: { type: "mosaic", amount: 64 },
     media: { index: "hover", work: "hover", about: "mono", contact: "mono" },
     motion: { lerp: 0.1, speed: 1 },
@@ -51,7 +52,7 @@ export const theme = {
       body: '"Geist", system-ui, sans-serif',
       mono: '"Geist Mono", ui-monospace, monospace',
     },
-    portrait: { image: "sunglasses07", width: "clamp(220px, 28vw, 420px)" },
+    portrait: { image: "profile", width: "clamp(220px, 28vw, 420px)" },
     veil: { type: "dither", amount: 210 },
     media: { index: "mono", work: "hover", about: "mono", contact: "mono" },
     motion: { lerp: 0.08, speed: 1 },
@@ -65,7 +66,7 @@ export const theme = {
       body: '"Hanken Grotesk", "Noto Sans Bengali", system-ui, sans-serif',
       mono: '"IBM Plex Mono", ui-monospace, monospace',
     },
-    portrait: { image: "sunglasses02", width: "min(28vw, 400px)" },
+    portrait: { image: "profile", width: "min(28vw, 400px)" },
     veil: { type: "smear", amount: 0.9 },
     media: { index: "duotone", work: "duotone", about: "duotone", contact: "duotone" },
     motion: { lerp: 0.1, speed: 1 },
@@ -79,7 +80,7 @@ export const theme = {
       body: '"Newsreader", Georgia, serif',
       mono: '"IBM Plex Mono", ui-monospace, monospace',
     },
-    portrait: { image: "sunglasses10", width: "clamp(170px, 20vw, 320px)" },
+    portrait: { image: "profile", width: "clamp(170px, 20vw, 320px)" },
     veil: { type: "scribble", amount: 170 },
     media: { index: "hover", work: "hover", about: "mono", contact: "mono" },
     motion: { lerp: 0.075, speed: 1 },

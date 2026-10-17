@@ -17,6 +17,7 @@ Run `npm install` once, then `npm run dev`. The variant picker opens at `/`. `np
 - Type: light weights only (200–300; 400 max for tiny UI). No bold.
 - Motion: GSAP + Lenis. Masked line reveals, hairline draws, one signature interaction per variant, a quiet page fade between pages. Respects `prefers-reduced-motion`.
 - Face: shown as a **low-quality** version, never a clean photo. Features stay visible (eyes, nose, mouth) but lo-fi. The veil is a runtime effect, not baked into the file, so swapping the image keeps it.
+- Profile source: all five variants use the same supplied image, `site-assets/portraits/profile.png`, with their existing theme-specific veil and sizing.
 - Project imagery: toned per page (mono, mono→colour on hover, duotone or colour), so colourful case images don't break the palette.
 
 ## Global knobs (the only files you need to touch)

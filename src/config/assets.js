@@ -1,7 +1,7 @@
 /**
  * ASSETS: every image and file the site uses lives in /site-assets, and only there.
  *
- *   site-assets/portraits/                    sunglasses portraits (pick one per theme in theme.js)
+ *   site-assets/portraits/profile.png        shared profile image used by all five themes
  *   site-assets/thumbnails/<project-slug>.*   laptop mock-up shown on every home page
  *   site-assets/variants/<theme>/<slug>/      images for that theme's case page
  *   site-assets/variants/<theme>/about/       photos for that theme's About page
@@ -17,14 +17,9 @@
  */
 
 /* ---------- portraits ---------- */
-import sunglasses02 from "../../site-assets/portraits/sunglasses-02.webp";
-import sunglasses03 from "../../site-assets/portraits/sunglasses-03.webp";
-import sunglasses05 from "../../site-assets/portraits/sunglasses-05.webp";
-import sunglasses07 from "../../site-assets/portraits/sunglasses-07.webp";
-import sunglasses10 from "../../site-assets/portraits/sunglasses-10.webp";
-import sunglasses11 from "../../site-assets/portraits/sunglasses-11.webp";
+import profile from "../../site-assets/portraits/profile.png";
 
-export const images = { sunglasses02, sunglasses03, sunglasses05, sunglasses07, sunglasses10, sunglasses11 };
+export const images = { profile };
 
 /** WebP as-is; PNG/JPG converted at build time. Returns { path: url }. */
 const pick = (webp, other) => ({ ...webp, ...other });
