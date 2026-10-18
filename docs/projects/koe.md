@@ -9,7 +9,7 @@ Content audit: 18 October 2026. Source repository: [watermelon588/Koe](https://g
 - Shared home thumbnail: `site-assets/thumbnails/koe.webp`.
 - Each theme has three images in `site-assets/variants/<theme>/koe/`; existing tone, layout and gallery behavior apply.
 - The new timeline entry links KOE's voice/workspace engineering to the existing portfolio narrative.
-- Only the supplied GitHub link is advertised. No deployed application URL was supplied or verified.
+- Project actions link to the GitHub repository and the user-supplied live site, `https://koe-pi.vercel.app/`. Adding the deployment link does not establish real-provider acceptance.
 
 ## Evidence behind the copy
 
@@ -56,7 +56,7 @@ Case-page captures are converted to lossless WebP at their original dimensions. 
 
 - Production Vite build.
 - Isolated Chrome checks at 1440 × 1000 and 390 × 844 for all five themes: home work-index link → KOE case → another theme with `p=koe` retained.
-- Project title/description, repository action, truthful missing-live-link state, metrics, detailed sections and screenshot disclosure.
+- Project title/description, repository and live-site actions, metrics, detailed sections and screenshot disclosure.
 - All three case images decode successfully and fit the viewport; no horizontal page overflow, runtime errors or failed local resources.
 - The work order is Walkthru → TripVerse → SkyGuide AI → Neuron → Yap Chat → KOE → Shiori → Forcaster. Forcaster wraps to Walkthru, and KOE links next to Shiori.
 - Visual review of desktop and mobile case layouts, including expanded Ledger sections.

@@ -324,7 +324,7 @@ export const content = {
         { kicker: "Verification & next steps", title: "Implemented is different from accepted live.", body: "The repository contains backend and frontend regression suites for approval races, identity isolation, provider contracts, interruption handling, audio ownership and connected-workspace state. Those fixtures prove specific behavior without authorizing real account mutations. Remaining acceptance includes real Google/GitHub consent and writes, eligible Spotify playback and voice handoff, Meta delivery setup, and physical-phone microphone and push behavior. The next milestone is controlled hosted acceptance with exact callback URLs and migrated storage; this case study does not claim that a build or a synthetic screenshot proves those integrations live." },
       ],
       stack: ["Python", "FastAPI", "Gemini Live", "PostgreSQL / Neon", "React", "TypeScript", "WebSockets", "Web Audio", "Three.js / VRM", "OAuth", "Spotify SDK", "PWA"],
-      links: { github: "https://github.com/watermelon588/Koe" },
+      links: { live: "https://koe-pi.vercel.app/", github: "https://github.com/watermelon588/Koe" },
     },
     {
       slug: "shiori",
