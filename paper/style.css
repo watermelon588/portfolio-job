@@ -33,6 +33,8 @@ main > * { max-width: 1180px; }
   padding-bottom: 0.06em;
 }
 .hero-sm .name { font-size: clamp(56px, 11vw, 190px); }
+/* Project titles need room for descenders, parentheses and fallback CJK glyphs. */
+.p-work .name { line-height: 1.1; padding-bottom: 0.18em; }
 .rule { height: 1px; background: var(--muted); opacity: 0.7; width: 88%; }
 .role {
   font-size: clamp(20px, 2.1vw, 30px);
