@@ -4,7 +4,7 @@ Content audit: 18 October 2026. Source repository: [watermelon588/Koe](https://g
 
 ## Portfolio integration
 
-- Shared project record: `src/config/content.js`, slug `koe`, first in the work list.
+- Shared project record: `src/config/content.js`, slug `koe`, directly after Yap Chat and before Shiori in the work list.
 - Case route in every theme: `/<theme>/work.html?p=koe`.
 - Shared home thumbnail: `site-assets/thumbnails/koe.webp`.
 - Each theme has three images in `site-assets/variants/<theme>/koe/`; existing tone, layout and gallery behavior apply.
@@ -39,18 +39,18 @@ The case-study numbers describe checked source contracts, not measured productio
 
 ## Image provenance
 
-Every image comes from `design/koe-mockups-2026-10-17/screenshots/current/` in KOE. Its `capture-report.json` and adjacent README identify running-app captures made with isolated synthetic account/API responses. `12-live-call.png` uses a simulated call. These are not the separate HTML design concepts or generated companion artwork.
+Case-page images come from `design/koe-mockups-2026-10-17/screenshots/current/` in KOE. Its `capture-report.json` and adjacent README identify running-app captures made with isolated synthetic account/API responses. `12-live-call.png` uses a simulated call. These are not the separate HTML design concepts or generated companion artwork.
 
 | Portfolio placement | Original captures, in order |
 | --- | --- |
-| Shared home thumbnail | `12-live-call.png` |
+| Shared home thumbnail | Supplied laptop artwork: `site-assets/mockups/koe/01-koe-logo.png` in the portfolio repository |
 | Paper | `03-dashboard.png`, `12-live-call.png`, `04-chat.png` |
 | Ledger | `03-dashboard.png`, `05-notion.png`, `06-music.png` |
 | Signal | `12-live-call.png`, `03-dashboard.png`, `06-music.png` |
 | Blueprint | `03-dashboard.png`, `12-live-call.png`, `05-notion.png` |
 | Dial | `02-home.png`, `12-live-call.png`, `06-music.png` |
 
-Case-page captures are converted to lossless WebP at their original dimensions. The home thumbnail is resized to 1200 pixels wide and encoded as WebP. No content is generated, retouched or composited. Original source files remain unchanged. The visible case-study status and Product evidence section disclose the synthetic data and simulated call.
+Case-page captures are converted to lossless WebP at their original dimensions. The home thumbnail is resized to 1200 pixels wide and encoded as WebP. The supplied logo laptop mockup replaces the previous call-screen thumbnail; it is presentation artwork, not an application screenshot. See `site-assets/mockups/koe/README.md` for its provenance. Case captures are not retouched or composited. Original source files remain unchanged. The visible case-study status and Product evidence section disclose the synthetic data and simulated call.
 
 ## Portfolio verification
 
@@ -58,5 +58,5 @@ Case-page captures are converted to lossless WebP at their original dimensions. 
 - Isolated Chrome checks at 1440 × 1000 and 390 × 844 for all five themes: home work-index link → KOE case → another theme with `p=koe` retained.
 - Project title/description, repository action, truthful missing-live-link state, metrics, detailed sections and screenshot disclosure.
 - All three case images decode successfully and fit the viewport; no horizontal page overflow, runtime errors or failed local resources.
-- The existing final project, Forcaster, wraps to KOE; KOE's next project is Walkthru.
+- The work order is Walkthru → TripVerse → SkyGuide AI → Neuron → Yap Chat → KOE → Shiori → Forcaster. Forcaster wraps to Walkthru, and KOE links next to Shiori.
 - Visual review of desktop and mobile case layouts, including expanded Ledger sections.

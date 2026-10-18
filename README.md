@@ -21,7 +21,7 @@ The same content is presented in five different designs. On each visit a die rol
 
 ## What's inside
 
-- **Work:** case studies of my projects (KOE, Walkthru, TripVerse, SkyGuide AI, Neuron, Yap Chat, Shiori, Forcaster). They cover the architecture, the hard problems and how they were solved, with GitHub links and live links where available.
+- **Work:** case studies of my projects (Walkthru, TripVerse, SkyGuide AI, Neuron, Yap Chat, KOE, Shiori, Forcaster). They cover the architecture, the hard problems and how they were solved, with GitHub links and live links where available.
 - **Writing:** my articles on Hashnode.
 - **About:** who I am, how I work, and what I'm currently going deep on.
 - **Contact:** email, socials, résumé and a message form.
