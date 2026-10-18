@@ -94,6 +94,7 @@ export const content = {
       { year: "2026", title: "SkyGuide AI · Neuron", detail: "Distributed realtime systems and multimodal retrieval" },
       { year: "2026", title: "TripVerse · Shiori", detail: "LangGraph planning agents; security-hardening a Go media server" },
       { year: "2026", title: "Walkthru", detail: "Browser agents, durable queues, MCP and evals" },
+      { year: "2026", title: "KOE (声)", detail: "Realtime voice, connected workspaces and persisted approval gates" },
     ],
   },
 
@@ -110,6 +111,48 @@ export const content = {
   },
 
   work: [
+    {
+      slug: "koe",
+      title: "KOE (声)",
+      year: "2026",
+      role: "Voice agent & workspace",
+      tagline: "A voice-first workday companion. Every consequential action gets a preview.",
+      summary:
+        "Gemini Live voice calls, chat and voice notes over one FastAPI tool registry. GitHub, Calendar, Docs, Sheets and Notion workflows share a persisted approval gate; an exclusive audio coordinator keeps Spotify and conversations from competing.",
+      overview:
+        "KOE — voice in Japanese — brings a developer's day into one conversational workspace. Speak to a 3D companion, type a question or leave a voice note to review pull requests, find meeting time, update a document or log hours. A React dashboard makes the underlying work visible: the schedule, review queue, proposed changes and their results. The core engineering problem is carrying a conversation across realtime audio and external APIs while keeping identity, approval and the outcome of each write explicit.",
+      status:
+        "Voice, chat and connected-tool paths are implemented; real-provider and physical-device acceptance is still pending. Screenshots show the running app with synthetic account/API responses and a simulated call.",
+      metrics: [
+        { value: "16 kHz", label: "mono PCM16 microphone input" },
+        { value: "24 kHz", label: "scheduled PCM16 playback" },
+        { value: "10 min", label: "persisted proposal expiry" },
+        { value: "3", label: "conversation entry points: call, chat, WhatsApp" },
+      ],
+      highlights: [
+        "One Python tool registry and approval flow behind live calls, web chat and WhatsApp text/voice notes, with conversation-scoped context",
+        "PostgreSQL-backed proposals freeze the destination and exact arguments; an owner/session-bound atomic claim prevents duplicate confirmation from executing the same proposal twice",
+        "AudioWorklet microphone capture, gapless Web Audio scheduling, interruption-driven queue flushing and Gemini session resumption",
+        "Calendar etags, Google Docs required revisions and stable Sheets row metadata keep approved edits tied to the evidence the user reviewed",
+        "Fernet-encrypted OAuth credentials stay on the backend; provider grants and account identity are checked before connected work",
+        "Music/call coordination requires evidence that playback stopped; an unknown player state blocks voice acquisition instead of assuming silence",
+        "Source-backed limits and focused regression suites; product screenshots, design concepts and live acceptance are documented separately",
+      ],
+      sections: [
+        { kicker: "The problem", title: "A workday spread across tabs.", body: "A developer can have a review waiting in GitHub, meeting time in Calendar, notes in Notion and hours in a spreadsheet. KOE gives those tasks a conversational entry point and a visible workspace. Requests stay bounded: read the review queue, explain a selected commit, propose a meeting or prepare an exact document edit. The companion provides continuity while the backend validates the work." },
+        { kicker: "Architecture", title: "One backend, three conversational entrances.", body: "React and TypeScript provide the call, chat, dashboard, Notion, Music and settings views. FastAPI handles HTTP APIs, provider authentication and two WebSocket paths: audio/control for calls and JSON events for activity and approvals. Gemini Live handles speech-to-speech interaction; text and recorded-note paths reuse the Python tool registry and approval mechanism. Neon PostgreSQL persists accounts, connections, chat, activity and proposed actions." },
+        { kicker: "Realtime audio", title: "Interruptions are part of the protocol.", body: "An AudioWorklet captures mono PCM16 at 16 kHz. Incoming 24 kHz audio chunks are scheduled against the Web Audio clock, with an initial jitter buffer. When the user talks over a reply, the backend sends an interrupted event and the player flushes unheard audio. Gemini resumption handles let a logical call continue across model connections. The audio analyser drives the VRM companion's mouth, and speech-end-to-first-audio timings are recorded for diagnosis." },
+        { kicker: "Approval gate", title: "A proposal has an explicit lifecycle.", body: "Write tools normalize and validate arguments, read current provider evidence and persist an exact proposal before execution. PostgreSQL permits one pending proposal per owner/session and expires it after ten minutes. The application accepts confirmation only after the proposal has been presented, then atomically changes pending to executing before invoking the allowlisted writer. Repeated clicks cannot claim it again. Results become executed or failed; ambiguous external outcomes are never automatically replayed. The owner's append-only Notion daily log is the explicitly documented exception to separate approval." },
+        { kicker: "GitHub & Calendar", title: "Read evidence before proposing a change.", body: "GitHub OAuth and repository selection bound the review queue, PR/CI views, shipped history and commit-detail reads. Python deduplicates activity and calculates statistics; the model explains returned evidence. PR comments require an approved exact body, and there is no merge tool. Calendar proposals freeze the configured calendar, timezone and relevant event versions. Bounded recurrence expands to at most twenty occurrences; moves and cancellations check etags. Saving an event and obtaining a ready Google Meet link are reported as separate outcomes." },
+        { kicker: "Documents & records", title: "Approval stays attached to the version you read.", body: "Google Docs reads identify a tab and revision; edits append plain text or replace one unique exact passage. Execution uses requiredRevisionId, so a collaborator's intervening edit is rejected rather than silently merged. Sheets previews freeze a row's values and schema, preserve formulas and tracking fields, and resolve stable developer-metadata anchors before a RAW cell update. These checks are optimistic concurrency safeguards, not an external-editor transaction lock. Notion supports bounded task, note and meeting records, additive schema changes and approved trash, while its agent integration remains owner-scoped." },
+        { kicker: "Music & voice", title: "One audio owner at a time.", body: "Spotify playback has a separate service and browser SDK lifecycle. The audio coordinator arbitrates music, live calls, recordings and recorded replies, including cross-tab ownership. Voice starts only after a pause is confirmed; a timeout or unknown playback state blocks acquisition. Voice music controls have their own enablement and playlist permissions. Track metadata stays outside model prompts. Eligible accounts, a real active device and controlled audible acceptance remain necessary to validate the complete experience." },
+        { kicker: "Reliability & identity", title: "Bound the work and retain the result.", body: "Model generation has per-attempt timeouts and an overall selection budget; a text-provider fallback is limited to the start of a turn so tool work is not replayed. Credentials are encrypted with Fernet before database storage and loaded by account/provider on the server. Cold credential lookups and blocking I/O move off the event loop. Durable proposal and result writes are awaited, while best-effort activity logging has a bounded backlog. A degraded provider is surfaced to the user instead of becoming a fabricated successful action." },
+        { kicker: "Product evidence", title: "The interface exposes what the agent is doing.", body: "The dashboard brings Calendar, the review queue, PRs, approvals and activity together. Calls pair the 3D companion with transcript and workspace views; chat and recorded voice notes offer another way in. A PWA manifest, service worker and install flow support the mobile web channel. The images in this case study come from the actual application running with isolated synthetic account/API responses. The call state is simulated. Separate concept art and proposed pages are kept out of these product captures." },
+        { kicker: "Verification & next steps", title: "Implemented is different from accepted live.", body: "The repository contains backend and frontend regression suites for approval races, identity isolation, provider contracts, interruption handling, audio ownership and connected-workspace state. Those fixtures prove specific behavior without authorizing real account mutations. Remaining acceptance includes real Google/GitHub consent and writes, eligible Spotify playback and voice handoff, Meta delivery setup, and physical-phone microphone and push behavior. The next milestone is controlled hosted acceptance with exact callback URLs and migrated storage; this case study does not claim that a build or a synthetic screenshot proves those integrations live." },
+      ],
+      stack: ["Python", "FastAPI", "Gemini Live", "PostgreSQL / Neon", "React", "TypeScript", "WebSockets", "Web Audio", "Three.js / VRM", "OAuth", "Spotify SDK", "PWA"],
+      links: { github: "https://github.com/watermelon588/Koe" },
+    },
     {
       slug: "walkthru",
       title: "Walkthru",
