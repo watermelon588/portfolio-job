@@ -71,6 +71,11 @@ const pages = {
         <div class="text">
           <p data-split>I'm ${c.person.name}, a ${c.person.role.toLowerCase()} in ${c.person.location.split(",")[0]}. ${em(c.hero.statement)}</p>
           ${c.about.body.map((p) => `<p data-split>${em(p)}</p>`).join("")}
+          <div class="btns" data-reveal>
+            <a class="btn btn-live" href="${c.person.resume}" download="Rohit-Maity-Resume.pdf" target="_blank" rel="noopener noreferrer">
+              <span>${c.buttons.resume}</span><span aria-hidden="true">↓</span>
+            </a>
+          </div>
           <p class="more" data-reveal><a class="u" href="./about.html">→ More about me</a></p>
         </div>
         ${figure(portrait, c.person.name)}

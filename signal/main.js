@@ -83,6 +83,11 @@ const pages = {
       ${fig(portrait, { cls: "portrait-wrap", alt: c.person.name, veil: true, attrs: 'data-reveal data-delay="0.1"' })}
       <h1 class="name" data-split data-delay="0.35">${c.person.name}</h1>
       <p class="role" data-reveal data-delay="0.6">${c.person.roleLong}</p>
+      <div class="btns" data-reveal data-delay="0.75">
+        <a class="btn btn-live" href="${c.person.resume}" download="Rohit-Maity-Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <span>${c.buttons.resume}</span><span aria-hidden="true">↓</span>
+        </a>
+      </div>
     </section>
 
     <section class="statement"><p data-split>${em(c.hero.statement)}</p></section>

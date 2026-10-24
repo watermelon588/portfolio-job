@@ -68,6 +68,11 @@ const pages = {
     <section class="hero">
       <h1 class="statement" data-split data-delay="0.15">${em(c.hero.statement)}</h1>
       ${fig(portrait, { cls: "portrait", alt: c.person.name, veil: true, attrs: 'data-reveal data-delay="0.7"' })}
+      <div class="btns" data-reveal data-delay="0.45">
+        <a class="btn btn-live" href="${c.person.resume}" download="Rohit-Maity-Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <span>${c.buttons.resume}</span><span aria-hidden="true">↓</span>
+        </a>
+      </div>
       <dl class="meta mono" data-reveal data-delay="0.6">
         <div><dt>Name</dt><dd>${c.person.name}</dd></div>
         <div><dt>Role</dt><dd>${c.person.role}</dd></div>

@@ -40,7 +40,7 @@ export const content = {
   nav: { home: "Index", work: "Work", about: "About", contact: "Contact", resume: "Résumé", back: "Back", next: "Next project", all: "All work", highlights: "Engineering highlights" },
 
   // Case-page buttons. A project without a link shows the "missing" label, disabled.
-  buttons: { live: "Live site", github: "GitHub repo", liveMissing: "Live — runs locally", githubMissing: "Repo — private" },
+  buttons: { live: "Live site", github: "GitHub repo", liveMissing: "Live — runs locally", githubMissing: "Repo — private", resume: "Download résumé" },
 
   hero: {
     tagline: "backends that hold up.",

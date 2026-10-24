@@ -82,6 +82,11 @@ const pages = {
         label: `A. ${c.person.role}`,
         open: true,
         body: `<p>${c.about.lead}</p>${c.about.body.map((p) => `<p class="dim">${em(p)}</p>`).join("")}
+               <div class="btns">
+                 <a class="btn btn-live" href="${c.person.resume}" download="Rohit-Maity-Resume.pdf" target="_blank" rel="noopener noreferrer">
+                   <span>${c.buttons.resume}</span><span aria-hidden="true">↓</span>
+                 </a>
+               </div>
                <p class="links"><a href="./about.html">More about me ↗</a></p>
                ${fig(portrait, { cls: "portrait", alt: c.person.name, veil: true })}`,
       })}

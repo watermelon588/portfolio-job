@@ -82,6 +82,11 @@ const pages = {
       ${fig(portrait, { cls: "portrait", alt: c.person.name, veil: true, attrs: 'data-reveal data-delay="0.6"' })}
       ${title(c.person.name, `${lower(c.person.role)}.`)}
       <p class="note" data-reveal data-delay="0.7">${c.hero.note.join("<br />")}</p>
+      <div class="btns" data-reveal data-delay="0.8">
+        <a class="btn btn-live" href="${c.person.resume}" download="Rohit-Maity-Resume.pdf" target="_blank" rel="noopener noreferrer">
+          <span>${lower(c.buttons.resume)}</span><span aria-hidden="true">↓</span>
+        </a>
+      </div>
     </section>
 
     <section class="intro">
