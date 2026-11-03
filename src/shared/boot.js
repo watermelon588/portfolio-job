@@ -11,13 +11,14 @@ import { images } from "../config/assets.js";
 import { page, currentProject, nextProject, aboutPhotos } from "./data.js";
 import { applyVeils } from "./veil.js";
 import { wireForm } from "./form.js";
+import { wireProjects } from "./projects.js";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 export { gsap, ScrollTrigger, SplitText };
 
-const TITLES = { index: null, about: "About", contact: "Contact" };
+const TITLES = { index: null, projects: "Projects", about: "About", contact: "Contact" };
 
 /**
  * Boot a variant page: apply its theme, load fonts, render, then wire motion.
@@ -29,7 +30,7 @@ export async function boot(key, render, after) {
   const root = document.documentElement;
   root.classList.add("is-loading");
   root.dataset.variant = key;
-  root.dataset.tone = t.media?.[page] ?? "color";
+  root.dataset.tone = t.media?.[page === "projects" ? "index" : page] ?? "color";
 
   for (const [k, v] of Object.entries(t.colors)) root.style.setProperty(`--${k}`, v);
   for (const k of ["display", "body", "mono"]) root.style.setProperty(`--font-${k}`, t.fonts[k]);
@@ -41,7 +42,7 @@ export async function boot(key, render, after) {
   document.head.append(fonts);
 
   const ctx = {
-    c: content,
+    c: page === "index" ? { ...content, work: content.work.slice(0, 5) } : content,
     t,
     page,
     portrait: t.portrait.image ? images[t.portrait.image] : null,
@@ -66,6 +67,7 @@ export async function boot(key, render, after) {
   applyVeils(t.veil);
   setSessionTheme(key);
   themeSwitcher(key);
+  wireProjects(ctx);
   wireForm();
   startClocks();
   pageFades();

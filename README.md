@@ -21,7 +21,8 @@ The same content is presented in five different designs. On each visit a die rol
 
 ## What's inside
 
-- **Work:** case studies of my projects (Walkthru, TripVerse, SkyGuide AI, Neuron, Yap Chat, KOE, Shiori, Forcaster). They cover the architecture, the hard problems and how they were solved, with GitHub links and live links where available.
+- **Featured work:** the first five projects appear on each homepage, with a link to the complete collection.
+- **Projects:** a dedicated, filterable catalog in all five themes (Walkthru, TripVerse, SkyGuide AI, Neuron, Yap Chat, Scribb, KOE, Shiori, Forcaster). Categories cover AI, ML & search, Full-stack and Backend. Every project has an engineering case study, repository links and live links where available.
 - **Writing:** my articles on Hashnode.
 - **About:** who I am, how I work, and what I'm currently going deep on.
 - **Contact:** email, socials, résumé and a message form.
@@ -41,6 +42,10 @@ Everything is driven from three places, so changing the site rarely means touchi
 | Images and the résumé | `site-assets/` (folders are picked up automatically, in filename order) |
 
 All five themes use the same profile photo from `site-assets/portraits/profile.png`. Replace that file to update the portrait everywhere; each theme keeps its own portrait size and visual treatment from `src/config/theme.js`.
+
+Projects live at `/<theme>/projects.html`; case studies remain at `/<theme>/work.html?p=<slug>`. Catalog filters use `?category=ai`, `ml`, `development` or `backend`, survive refresh/back navigation and follow theme switching. Case pages include a category filter and project chooser.
+
+To add a project, create a record in `content.work` with a unique `slug`, `sections`, `categories` and links, then add a shared thumbnail in `site-assets/thumbnails/<slug>.webp` and case images under each `site-assets/variants/<theme>/<slug>/`. Categories may overlap. New entries automatically join the catalog, filter counts, case chooser and next-project chain. The homepage selects the first five records in the array; reorder that array to change featured work.
 
 ## Run it
 

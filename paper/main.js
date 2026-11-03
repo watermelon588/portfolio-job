@@ -1,3 +1,4 @@
+import { projectsPage } from "../src/shared/projects.js";
 import { boot, gsap, SplitText, reduced, ext, actions, fig } from "../src/shared/boot.js";
 import { em } from "../src/config/content.js";
 import { cases, projectHref, imagesOf, thumbOf } from "../src/shared/data.js";
@@ -5,7 +6,6 @@ import { formFields } from "../src/shared/form.js";
 import "./style.css";
 
 const arrow = `<svg class="arw" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 2l8 8M10 3.5V10H3.5" fill="none" stroke="currentColor" stroke-width="1"/></svg>`;
-const back = `<svg class="arw" viewBox="0 0 12 12" aria-hidden="true"><path d="M10 10L2 2M2 8.5V2h6.5" fill="none" stroke="currentColor" stroke-width="1"/></svg>`;
 const lower = (s) => s.toLowerCase();
 
 /* ---------- chrome ---------- */
@@ -14,8 +14,8 @@ const header = ({ c, page }) => `
   <header class="top">
     <a href="./index.html" class="mark">${lower(c.person.name)}/</a>
     <nav aria-label="Pages">
-      ${[["index.html#work", c.nav.work, "work"], ["about.html", c.nav.about, "about"], ["contact.html", c.nav.contact, "contact"]]
-        .map(([h, l, p]) => `<a href="./${h}" class="${page === p ? "accent" : ""}">${lower(l)}</a>`)
+      ${[["projects.html", c.nav.work, "projects"], ["about.html", c.nav.about, "about"], ["contact.html", c.nav.contact, "contact"]]
+        .map(([h, l, p]) => `<a href="./${h}" class="${page === p || (page === "work" && p === "projects") ? "accent" : ""}">${lower(l)}</a>`)
         .join("")}
     </nav>
     <a href="${c.person.resume}" target="_blank" rel="noopener">${lower(c.nav.resume)}</a>
@@ -143,7 +143,6 @@ const pages = {
     const gallery = [...img.gallery];
     return `
     <section class="hero hero-sm">
-      <a href="./index.html#work" class="crumb" data-reveal>${back}${lower(c.nav.all)}</a>
       ${title(w.title, w.tagline)}
     </section>
 
@@ -251,9 +250,9 @@ const pages = {
 
 boot(
   "paper",
-  (ctx) => `${header(ctx)}<main class="p-${ctx.page}">${pages[ctx.page](ctx)}</main>${footer(ctx)}`,
+  (ctx) => `${header(ctx)}<main class="p-${ctx.page}">${(ctx.page === "projects" ? projectsPage(ctx) : pages[ctx.page](ctx))}</main>${footer(ctx)}`,
   () => {
-    if (reduced) return;
+    if (reduced || !document.querySelector(".name")) return;
     // Big words: letters rise from behind the hairline.
     SplitText.create(".name", {
       type: "words,chars",

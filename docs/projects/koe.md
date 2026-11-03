@@ -4,7 +4,7 @@ Content audit: 18 October 2026. Source repository: [watermelon588/Koe](https://g
 
 ## Portfolio integration
 
-- Shared project record: `src/config/content.js`, slug `koe`, directly after Yap Chat and before Shiori in the work list.
+- Shared project record: `src/config/content.js`, slug `koe`, directly after Scribb and before Shiori in the full Projects list. The homepage features the first five projects.
 - Case route in every theme: `/<theme>/work.html?p=koe`.
 - Shared home thumbnail: `site-assets/thumbnails/koe.webp`.
 - Each theme has three images in `site-assets/variants/<theme>/koe/`; existing tone, layout and gallery behavior apply.
@@ -58,5 +58,5 @@ Case-page captures are converted to lossless WebP at their original dimensions. 
 - Isolated Chrome checks at 1440 × 1000 and 390 × 844 for all five themes: home work-index link → KOE case → another theme with `p=koe` retained.
 - Project title/description, repository and live-site actions, metrics, detailed sections and screenshot disclosure.
 - All three case images decode successfully and fit the viewport; no horizontal page overflow, runtime errors or failed local resources.
-- The work order is Walkthru → TripVerse → SkyGuide AI → Neuron → Yap Chat → KOE → Shiori → Forcaster. Forcaster wraps to Walkthru, and KOE links next to Shiori.
+- The work order is Walkthru → TripVerse → SkyGuide AI → Neuron → Yap Chat → Scribb → KOE → Shiori → Forcaster. Forcaster wraps to Walkthru, and KOE links next to Shiori.
 - Visual review of desktop and mobile case layouts, including expanded Ledger sections.

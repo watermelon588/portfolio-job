@@ -1,3 +1,4 @@
+import { projectsPage } from "../src/shared/projects.js";
 import { boot, gsap, reduced, ext, actions, fig } from "../src/shared/boot.js";
 import { em } from "../src/config/content.js";
 import { projectHref, imagesOf, thumbOf } from "../src/shared/data.js";
@@ -19,7 +20,7 @@ const list = (title, rows) => `
 const header = ({ c, page }) => `
   <header class="top">
     <a href="./index.html" class="who"><span>${c.person.name}</span><span lang="bn">${c.person.nativeName}</span></a>
-    <a href="./index.html#work" class="u${page === "work" ? " on" : ""}">${c.nav.work}</a>
+    <a href="./projects.html" class="u${["work", "projects"].includes(page) ? " on" : ""}">${c.nav.work}</a>
     <a href="./about.html" class="u${page === "about" ? " on" : ""}">${c.nav.about}</a>
     <div>
       <a href="./contact.html" class="u${page === "contact" ? " on" : ""}">${c.nav.contact}</a>
@@ -166,7 +167,7 @@ const pages = {
 
 boot(
   "blueprint",
-  (ctx) => `${header(ctx)}<main class="p-${ctx.page}">${pages[ctx.page](ctx)}</main>${footer(ctx)}`,
+  (ctx) => `${header(ctx)}<main class="p-${ctx.page}">${(ctx.page === "projects" ? projectsPage(ctx) : pages[ctx.page](ctx))}</main>${footer(ctx)}`,
   () => {
     // Hovering a work row swaps the figure to that project's cover.
     const swap = document.querySelector(".swap");

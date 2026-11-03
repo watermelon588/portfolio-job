@@ -1,7 +1,7 @@
 import { content } from "../config/content.js";
 import { variantMedia, thumbnails } from "../config/assets.js";
 
-/** Which page this is: index | work | about | contact (set on <body data-page>). */
+/** Which page this is: index | projects | work | about | contact (set on <body data-page>). */
 export const page = document.body.dataset.page || "index";
 
 /** Projects that have a detail page (a slug + case sections). */

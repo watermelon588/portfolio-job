@@ -37,7 +37,7 @@ export const content = {
     resume: docs.resume,
   },
 
-  nav: { home: "Index", work: "Work", about: "About", contact: "Contact", resume: "Résumé", back: "Back", next: "Next project", all: "All work", highlights: "Engineering highlights" },
+  nav: { home: "Index", work: "Projects", about: "About", contact: "Contact", resume: "Résumé", back: "Back", next: "Next project", all: "All projects", highlights: "Engineering highlights" },
 
   // Case-page buttons. A project without a link shows the "missing" label, disabled.
   buttons: { live: "Live site", github: "GitHub repo", liveMissing: "Live — runs locally", githubMissing: "Repo — private", resume: "Download résumé" },
@@ -113,6 +113,7 @@ export const content = {
   work: [
     {
       slug: "walkthru",
+      categories: ["ai","backend"],
       title: "Walkthru",
       year: "2026",
       role: "AI agent platform",
@@ -121,7 +122,7 @@ export const content = {
         "A LangGraph browser agent that drives real user journeys in your own Chrome, backed by a stateless FastAPI API, a durable Postgres job queue, 18 deterministic scanners and a 24-tool remote MCP server. 711 API tests.",
       overview:
         "Walkthru is a launch check for apps built with AI. Persona agents try your real signup, onboarding and checkout flows inside your own browser, think aloud, and report exactly where they got stuck — with the step, the screenshot and the reason. The browser is the hands; the server is the brain. Everything that can be code is code: only the persona session is an agent, and every rule about where it may act is enforced on the server.",
-      status: "Implemented and tested end to end locally; production deployment is the next stage.",
+      status: "Live at trywalkthru.com. A deployed browser-agent platform with a Chrome extension, durable job queue and remote MCP server.",
       metrics: [
         { value: "711", label: "API tests (+90 extension tests)" },
         { value: "24", label: "MCP tools, per-key rate limited" },
@@ -146,10 +147,11 @@ export const content = {
         { kicker: "Evals", title: "Grounded, measured, regression-tested.", body: "LangSmith evals run the agent against fixture sites built to trap it, plus a model bake-off and a headless end-to-end driver for the built extension. grounded_ux() drops any UX finding that doesn't point at a real step with evidence, and the Launch Ready score is computed in code from what was actually measured — never by the model." },
       ],
       stack: ["Python", "FastAPI", "LangGraph", "LangSmith", "PostgreSQL", "Supabase (RLS)", "MCP", "Chrome MV3", "TypeScript"],
-      links: { github: "https://github.com/watermelon588/Walkthru" },
+      links: { live: "https://trywalkthru.com", github: "https://github.com/watermelon588/Walkthru" },
     },
     {
       slug: "tripverse",
+      categories: ["development","backend"],
       title: "TripVerse",
       year: "2026",
       role: "Agentic planner",
@@ -183,6 +185,7 @@ export const content = {
     },
     {
       slug: "skyguide-ai",
+      categories: ["ai"],
       title: "SkyGuide AI",
       year: "2026",
       role: "Distributed realtime system",
@@ -219,6 +222,7 @@ export const content = {
     },
     {
       slug: "neuron",
+      categories: ["ai","ml"],
       title: "Neuron",
       year: "2026",
       role: "Multimodal retrieval & RAG",
@@ -254,6 +258,7 @@ export const content = {
     },
     {
       slug: "yapchat",
+      categories: ["development","backend"],
       title: "Yap Chat",
       year: "2025",
       role: "Realtime messaging & WebRTC",
@@ -285,7 +290,115 @@ export const content = {
       links: { live: "https://yap-chat-five.vercel.app", github: "https://github.com/watermelon588/Yap-Chat" },
     },
     {
+      "slug": "scribb",
+      "categories": [
+        "ai",
+        "development",
+        "backend"
+      ],
+      "title": "Scribb",
+      "year": "2026",
+      "role": "Creative platform & journal AI",
+      "tagline": "A little space for what’s on your mind. A book you can make your own.",
+      "summary": "A deployed sketchbook and journal platform with tactile page turns, public creator profiles and a private-journal AI companion. React, Express and FastAPI share a Postgres data model with versioned saves and owner-scoped retrieval.",
+      "overview": "Scribb turns a portfolio of images or a collection of journal entries into a book with covers, paper, bindings and real page turns. Creators can keep a book private or publish it to a profile and an Explore feed. Behind the physical interface is a full-stack product: accounts, image ingestion, social interactions, versioned persistence and an AI companion that searches only the signed-in writer’s journal. The challenge is making a personal creative tool feel expressive while keeping content, ownership and saved state predictable.",
+      "status": "Live at scribb.xyz. The case images are the repository’s product-tour captures with sample books and profiles.",
+      "metrics": [
+        {
+          "value": "3",
+          "label": "sketchbook bindings: Linen, Spiral, Watercolor"
+        },
+        {
+          "value": "18",
+          "label": "journal layouts across four groups"
+        },
+        {
+          "value": "40",
+          "label": "artworks per sketchbook"
+        },
+        {
+          "value": "60s",
+          "label": "short-lived AI access tickets"
+        }
+      ],
+      "highlights": [
+        "A shared React book renderer carries covers, paper, page geometry and prepared journal leaves across studio, profile and reader views",
+        "Versioned book and entry saves reject stale updates with HTTP 409 and retain the local draft instead of silently overwriting work",
+        "Express authorizes journal AI with verified identity, explicit consent, quotas and signed 60-second tickets; FastAPI validates the ticket before retrieval",
+        "LangGraph separates question planning, bounded Postgres full-text retrieval and grounded answers with dated source references",
+        "A restricted database role and transaction-scoped user identity enforce journal ownership through Postgres row-level security",
+        "Image signature checks, bounded decoding, WebP re-encoding and independent API size/quota checks limit upload handling",
+        "Public profile, book and Explore routes return crawlable HTML with canonical URLs, Open Graph, JSON-LD and a live sitemap"
+      ],
+      "sections": [
+        {
+          "kicker": "The product",
+          "title": "A book instead of another document.",
+          "body": "Sketchbooks combine artwork with covers, paper, captions and three binding treatments. Journals add dated writing, pictures, stickers and seeded rough.js drawings. A single creation studio switches between the two, and private is the default. Publishing gives a book its own path under the creator’s username; Explore, likes, saves and follows make the work discoverable."
+        },
+        {
+          "kicker": "Architecture",
+          "title": "A physical interface over a conventional data model.",
+          "body": "React and TypeScript handle the studio, reading surfaces, profiles and account flows. Express owns authentication, books, journal entries, media, social data and AI authorization. PostgreSQL stores those records; production uses Neon. A separate FastAPI service runs the journal companion with Gemini and LangGraph. Deployment configuration routes the frontend, API and AI service behind the application, keeping provider credentials on the server."
+        },
+        {
+          "kicker": "Book rendering",
+          "title": "One renderer, several ways to hold the book.",
+          "body": "The shared Sketchbook component uses page-flip for real page turns; journal content is prepared into leaves by JournalBook. Editing happens on the live journal sheet outside the page-turn engine so typing does not recreate the book. Stable slot identifiers preserve content when a layout changes. Reference-sheet geometry keeps line breaks consistent between editor, reader and mobile views. GSAP handles supporting motion, with reduced-motion and native touch behavior respected."
+        },
+        {
+          "kicker": "Persistence",
+          "title": "Save a version, not a blind replacement.",
+          "body": "Books and journal entries carry a version. An update is accepted only when the owner and last-seen version still match; a stale save returns 409 and preserves the draft. Private books and entries return not-found responses to other readers. Feed pagination uses a timestamp and ID cursor rather than an unstable offset. Likes and saves are separate records, and publishing changes public visibility explicitly."
+        },
+        {
+          "kicker": "Journal AI",
+          "title": "Understand, retrieve, then answer.",
+          "body": "Ask my journal uses a small LangGraph flow. Gemini extracts structured date and topic filters, while application code owns the parameterized SQL. PostgreSQL full-text search returns ranked passages; date-only summaries are bounded to 31 entries and 8,000 context words. Empty, off-topic and overly broad requests receive fixed responses. Answers receive journal passages as evidence and return dated source references. Browser voice conversation is turn-based recognition and spoken replies, rather than a full-duplex call."
+        },
+        {
+          "kicker": "Identity & access",
+          "title": "The model never chooses whose journal to read.",
+          "body": "Express checks the signed-in account, verified email, consent and usage limits before issuing a short-lived signed AI ticket. The AI service derives identity from that ticket. Retrieval opens a transaction and sets app.user_id for a restricted Postgres role; row-level security limits the query to that writer. The connection check refuses roles that bypass those policies. Ticket replay tracking is process-local, so the source does not establish a distributed single-use guarantee."
+        },
+        {
+          "kicker": "Images & rich text",
+          "title": "Preserve the draft when input fails.",
+          "body": "The browser accepts JPG, PNG and WebP, checks signatures and dimensions before decoding, then re-encodes pixels to WebP. Limits include 10 MiB per input file, 40 MiB per batch and 40 artworks per sketchbook. The API separately checks stored-image type, byte limits and account quota before Cloudinary storage. Journal rich text uses an allowlist, while pasted speech enters as escaped plain text. Client checks improve ingestion; they are not the server’s security boundary."
+        },
+        {
+          "kicker": "Publishing",
+          "title": "Public work has a readable address.",
+          "body": "Profiles use /@username and books live below that path. The Express SEO layer renders public profile, book and Explore content into the HTML shell with canonical links, share metadata and structured data. A live sitemap and publishing-triggered IndexNow notifications support discovery. Private entries stay outside that public layer. Search and AI-search discovery are documented separately from the crawler rules for training."
+        },
+        {
+          "kicker": "Shipping",
+          "title": "A live product with visible engineering boundaries.",
+          "body": "The product is deployed at scribb.xyz, with typing, book creation and publishing as the core experience. The source includes Node API tests using isolated PGlite storage, Playwright integration tests and Python AI tests. These suites were inspected rather than rerun for this portfolio addition. Repository notes identify remaining operational boundaries such as Cloudinary deletion and process-local AI ticket replay storage. The screenshots show sample creator data and illustrate the product, not adoption or performance claims."
+        }
+      ],
+      "stack": [
+        "React",
+        "TypeScript",
+        "Express",
+        "PostgreSQL / Neon",
+        "Python",
+        "FastAPI",
+        "LangGraph",
+        "Gemini",
+        "GSAP",
+        "page-flip",
+        "Cloudinary",
+        "Vercel"
+      ],
+      "links": {
+        "live": "https://scribb.xyz",
+        "github": "https://github.com/watermelon588/Scribb"
+      }
+    },
+    {
       slug: "koe",
+      categories: ["ai","backend"],
       title: "KOE (声)",
       year: "2026",
       role: "Voice agent & workspace",
@@ -328,6 +441,7 @@ export const content = {
     },
     {
       slug: "shiori",
+      categories: ["backend"],
       title: "Shiori",
       year: "2026",
       role: "Go server hardening",
@@ -361,6 +475,7 @@ export const content = {
     },
     {
       slug: "forcaster",
+      categories: ["development"],
       title: "Forcaster",
       year: "2025",
       role: "Weather interface",

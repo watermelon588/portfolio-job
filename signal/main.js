@@ -1,3 +1,4 @@
+import { projectsPage } from "../src/shared/projects.js";
 import { boot, gsap, reduced, ext, actions, fig } from "../src/shared/boot.js";
 import { em } from "../src/config/content.js";
 import { cases, projectHref, imagesOf, thumbOf } from "../src/shared/data.js";
@@ -13,7 +14,7 @@ const header = ({ c, page }) => `
     <a href="./index.html" class="mono">${c.person.first[0]}. ${c.person.last}</a>
     <nav class="mono" aria-label="Pages">
       <a href="./index.html" class="u${page === "index" ? " on" : ""}">${c.nav.home}</a>
-      <a href="./index.html#work" class="u${page === "work" ? " on" : ""}">${c.nav.work}</a>
+      <a href="./projects.html" class="u${["work", "projects"].includes(page) ? " on" : ""}">${c.nav.work}</a>
       <a href="./about.html" class="u${page === "about" ? " on" : ""}">${c.nav.about}</a>
       <a href="./contact.html" class="u${page === "contact" ? " on" : ""}">${c.nav.contact}</a>
     </nav>
@@ -213,7 +214,7 @@ const pages = {
 
 boot(
   "signal",
-  (ctx) => `${header(ctx)}<main class="p-${ctx.page}">${pages[ctx.page](ctx)}</main>${footer(ctx)}`,
+  (ctx) => `${header(ctx)}<main class="p-${ctx.page}">${(ctx.page === "projects" ? projectsPage(ctx) : pages[ctx.page](ctx))}</main>${footer(ctx)}`,
   () => {
     const dur = reduced ? 0 : 0.55;
     const fine = matchMedia("(pointer: fine)").matches;

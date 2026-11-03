@@ -80,7 +80,7 @@ a.btn-code:hover { background: var(--accent); color: var(--paper); }
 /* ---------- footer: the blue block ---------- */
 .bar { margin-top: 24vh; background: var(--accent); color: var(--paper); padding: 12vh clamp(16px, 4vw, 56px) 30px; }
 .bar ::selection { background: var(--paper); color: var(--accent); }
-.bar-line { max-width: 24ch; font-size: clamp(28px, 3.6vw, 54px); line-height: 1.1; }
+.bar-line { max-width: 24ch; font-size: clamp(28px, 3.6vw, 54px); line-height: 1.1; overflow-wrap: anywhere; }
 .bar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 12vh; font-size: 13.5px; line-height: 1.5; }
 .bar-grid h2 { display: inline-block; border-bottom: 1px solid currentColor; margin-bottom: 10px; }
 .bar-grid p + p { margin-top: 8px; }

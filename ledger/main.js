@@ -1,3 +1,4 @@
+import { projectsPage } from "../src/shared/projects.js";
 import { boot, gsap, ScrollTrigger, reduced, ext, workLinks, actions, fig } from "../src/shared/boot.js";
 import { em } from "../src/config/content.js";
 import { projectHref, imagesOf, thumbOf } from "../src/shared/data.js";
@@ -32,7 +33,7 @@ const header = ({ c, page }) => `
   <div class="ghost" aria-hidden="true">${page === "work" ? "" : c.person.role}</div>
   <nav class="nav" aria-label="Pages">
     <a href="./index.html" class="${page === "index" ? "on" : ""}">01.${c.nav.home}</a>
-    <a href="./index.html#work" class="${page === "work" ? "on" : ""}">02.${c.nav.work}</a>
+    <a href="./projects.html" class="${["work", "projects"].includes(page) ? "on" : ""}">02.${c.nav.work}</a>
     <a href="./about.html" class="${page === "about" ? "on" : ""}">03.${c.nav.about}</a>
     <a href="./contact.html" class="${page === "contact" ? "on" : ""}">${star}${c.nav.contact}</a>
   </nav>`;
@@ -210,7 +211,7 @@ const pages = {
 
 boot(
   "ledger",
-  (ctx) => `${header(ctx)}<main class="p-${ctx.page}">${pages[ctx.page](ctx)}</main>${footer(ctx)}`,
+  (ctx) => `${header(ctx)}<main class="p-${ctx.page}">${(ctx.page === "projects" ? projectsPage(ctx) : pages[ctx.page](ctx))}</main>${footer(ctx)}`,
   () => {
     // Accordion: one row open at a time within each ledger.
     document.querySelectorAll(".ledger").forEach((ledger) => {

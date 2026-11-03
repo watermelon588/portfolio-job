@@ -3,7 +3,7 @@ import { imagetools } from "vite-imagetools";
 import { resolve } from "node:path";
 
 export const variants = ["paper", "ledger", "signal", "blueprint", "dial"];
-const pages = ["index", "work", "about", "contact"];
+const pages = ["index", "projects", "work", "about", "contact"];
 
 export default defineConfig({
   plugins: [imagetools()],
