@@ -1,0 +1,9 @@
+# Scribb laptop thumbnail
+
+Generated with the built-in image-generation tool on 3 November 2026.
+
+References: Scribb's `public/brand/scribb-mark.png`, `public/brand/og-card.jpg`, and this portfolio's `site-assets/mockups/koe/01-koe-logo.png`.
+
+## Exact generation prompt
+
+Use case: product-mockup. Create ONE finished high-resolution landscape 4:3 portfolio project thumbnail, ideally 2048x1536. Input reference 1 (Scribb mascot PNG) is the exact brand mark to preserve; input reference 2 (Scribb OG card) supplies the hand-lettered Scribb wordmark and warm cream/olive brand colors only; input reference 3 (KOE laptop mockup) supplies the laptop composition and premium product-photography style only. Scene: one realistic open silver aluminum laptop in a three-quarter front view, fully visible with comfortable margins, on a simple matte pale warm-stone / light cream studio surface, softly curved minimal backdrop. Match the scale, camera angle and restrained lighting of the KOE reference. Soft daylight, natural contact shadow, realistic black bezel, keyboard, trackpad and gentle material detail. Keep the scene basic and minimal, no props. Screen: flat warm ivory #F8F7F2, with ONLY a small centered Scribb brand lockup: the supplied calm smiling black-haired face mark above the supplied dark olive handwritten wordmark 'Scribb' (exact spelling S-c-r-i-b-b), modest visual footprint with lots of empty screen space. Faithfully reproduce the mascot silhouette and face; use reference 2's wordmark lettering. No tagline, no interface, no buttons, no browser chrome, no extra words, no stickers, no stars, no overlay text or watermarks, no other branding. Avoid futuristic elements, dramatic gradients, neon, extra laptops, excessive decorative curves. This is a new Scribb mockup, not a KOE image: remove all KOE text/symbols from the scene. Return only one image, not a collage.

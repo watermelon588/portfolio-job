@@ -35,11 +35,11 @@ The owner reports the application as deployed and working. Preparing this portfo
 
 ## Image provenance
 
-All images are existing product-tour captures from `docs/readme/` in the primary source checkout. They show sample creator profiles and books, including public-domain sample paintings credited in Scribb's `public/artworks/credits.json`. No new product UI or laptop mockup was generated for this addition. Images were resized with aspect ratio preserved and encoded as WebP, without retouching.
+Case-study images are existing product-tour captures from `docs/readme/` in the primary source checkout. They show sample creator profiles and books, including public-domain sample paintings credited in Scribb's `public/artworks/credits.json`. Captures were resized with aspect ratio preserved and encoded as WebP, without retouching. The shared catalog thumbnail is a separate generated presentation mockup, added on 3 November 2026 at the owner's request: a silver laptop with only the Scribb logo on its screen. Its original PNG and generation prompt are in `site-assets/mockups/scribb/`.
 
 | Placement | Original files, in order |
 | --- | --- |
-| Shared thumbnail | `explore-light.jpg`, 1200px wide |
+| Shared thumbnail | Generated `site-assets/mockups/scribb/scribb-laptop-logo.png`, exported at 1200 × 900; the previous `explore-light.jpg` thumbnail is preserved in that mockup folder |
 | Paper | `explore-light.jpg`, `book-preview.jpg`, `studio-journal.jpg` |
 | Ledger | `studio-sketchbook.jpg`, `book-preview.jpg`, `profile.jpg` |
 | Signal | `explore-dark.jpg`, `book-preview.jpg`, `studio-journal.jpg` |
