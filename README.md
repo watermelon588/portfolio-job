@@ -43,6 +43,10 @@ Everything is driven from three places, so changing the site rarely means touchi
 
 All five themes use the same profile photo from `site-assets/portraits/profile.png`. Replace that file to update the portrait everywhere; each theme keeps its own portrait size and visual treatment from `src/config/theme.js`.
 
+Browser and Apple touch icons use clear, unfiltered exports of that same profile photo in `public/favicon-*.png`, `public/favicon.ico` and `public/apple-touch-icon.png`. The original-resolution public copy is `public/profile-share.png`; `public/portfolio-share.png` centers it on a 1200 × 630 share card. Regenerate these exports when the profile image changes. Favicon URLs include a version query to refresh the previous monogram.
+
+Open Graph and X card metadata are emitted into every page's HTML by `vite.config.js`, so link-preview crawlers do not need JavaScript. Edit `src/config/site.js` for the public production origin, title and share-image URL. The production origin is `https://portfolio2-mu-inky.vercel.app`; update it when moving domains. `public/robots.txt` allows the public pages and Twitterbot. Shared case-study URLs use the portfolio profile image; their detailed content still loads in the browser.
+
 Projects live at `/<theme>/projects.html`; case studies remain at `/<theme>/work.html?p=<slug>`. Catalog filters use `?category=ai`, `ml`, `development` or `backend`, survive refresh/back navigation and follow theme switching. Case pages include a category filter and project chooser.
 
 To add a project, create a record in `content.work` with a unique `slug`, `sections`, `categories` and links, then add a shared thumbnail in `site-assets/thumbnails/<slug>.webp` and case images under each `site-assets/variants/<theme>/<slug>/`. Categories may overlap. New entries automatically join the catalog, filter counts, case chooser and next-project chain. The homepage selects the first five records in the array; reorder that array to change featured work.
