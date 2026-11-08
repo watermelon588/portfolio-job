@@ -5,7 +5,7 @@ Reviewed 3 November 2026. Source repository: [watermelon588/Scribb](https://gith
 ## Integration
 
 - Live application: `https://scribb.xyz`, as linked in the source README and confirmed by the owner. Walkthru now links to `https://trywalkthru.com`, the URL already saved locally when this task began.
-- Scribb is the sixth project, after the existing five featured projects and before KOE. The earlier relative order is preserved.
+- Scribb follows Yap Chat and precedes KOE in the Projects catalog.
 - Each theme exposes `projects.html` and `work.html?p=scribb` with live-site and GitHub actions.
 - Categories: AI, Full-stack and Backend. AI journal retrieval uses Postgres full-text search; this case study does not present it as a separately trained ML model.
 - Existing resume changes in the portfolio working tree were left untouched.

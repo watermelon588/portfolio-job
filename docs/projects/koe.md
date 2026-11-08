@@ -58,5 +58,5 @@ Case-page captures are converted to lossless WebP at their original dimensions. 
 - Isolated Chrome checks at 1440 × 1000 and 390 × 844 for all five themes: home work-index link → KOE case → another theme with `p=koe` retained.
 - Project title/description, repository and live-site actions, metrics, detailed sections and screenshot disclosure.
 - All three case images decode successfully and fit the viewport; no horizontal page overflow, runtime errors or failed local resources.
-- The work order is Walkthru → TripVerse → SkyGuide AI → Neuron → Yap Chat → Scribb → KOE → Shiori → Forcaster. Forcaster wraps to Walkthru, and KOE links next to Shiori.
+- The work order is Walkthru → TripVerse → SkyGuide AI → Neuron → Claimwise → Yap Chat → Scribb → KOE → Shiori → Forcaster. Forcaster wraps to Walkthru, and KOE links next to Shiori.
 - Visual review of desktop and mobile case layouts, including expanded Ledger sections.

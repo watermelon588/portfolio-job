@@ -257,6 +257,42 @@ export const content = {
       links: { github: "https://github.com/watermelon588/Neuron" },
     },
     {
+      slug: "claimwise",
+      categories: ["ai", "development", "backend"],
+      title: "Claimwise",
+      year: "2026",
+      role: "AI-assisted claims workflow",
+      tagline: "From policy review to verified payment, one case keeps the evidence together.",
+      summary:
+        "A health insurance claims prototype that reads documents, prepares a reviewable claim pack, and tracks the outcome. Gemini extracts facts; FastAPI and LangGraph keep approvals, mock submissions, and payment checks tied to the case.",
+      overview:
+        "Claimwise gives patients and authorized caregivers one place to review policy details, collect evidence, prepare a claim and follow it through a decision and payment. The Dossier shows what needs review, what is missing and which action is available next. The engineering challenge is keeping that record intact across corrections, interrupted submissions and revised decisions, without turning model output into permission to act.",
+      status: "Hosted prototype for synthetic records. Payer, hospital and bank integrations are simulated; production identity and case authorization remain release gates.",
+      metrics: [
+        { value: "6", label: "documented lifecycle checkpoints" },
+        { value: "13", label: "synthetic journeys in the recorded validation" },
+        { value: "124/127", label: "checks passed in the 6 Nov 2026 end-to-end run" },
+      ],
+      highlights: [
+        "Gemini extracts typed document facts; users confirm policy fields and the backend checks dates, names, coverage limits and totals",
+        "LangGraph keeps a claim's facts, action state and pending review on the same thread; Postgres provides persistent checkpoints when configured",
+        "Approval binds to the current claim-pack hash; replacing evidence or withdrawing representative authority can invalidate it",
+        "A stable client reference and mock payer lookup recover submissions whose response was lost after the payer accepted them",
+        "Signed mock webhooks and checks on reopening a case keep payer requests and decisions visible",
+        "Payment checks compare reported settlements against bank credits and surface missing, short or ambiguous matches",
+      ],
+      sections: [
+        { kicker: "The workspace", title: "One record from intake to resolution.", body: "A claim begins with a policy schedule and the claimant's role. The Dossier carries confirmed facts, document versions, insurer messages and available actions through preparation, submission, waiting, decision, payment and closure. The demo includes reimbursement, cashless treatment, caregiver authority, multiple policies and balance claims. Pip explains what to do next while the case record shows the evidence behind each step." },
+        { kicker: "Document intake", title: "Extract facts, then put them in front of the user.", body: "Gemini classifies PDFs and images and returns typed facts for policy schedules, bills, discharge summaries, insurer letters and bank statements. The user confirms or corrects policy details. Code checks evidence completeness, policy periods and bill arithmetic, and keeps source document IDs and versions. Document text can supply evidence but cannot grant permission to submit or approve anything." },
+        { kicker: "State and approval", title: "Approve the exact pack that will be sent.", body: "React renders the Dossier and Mock Console; FastAPI handles uploads, turns and structured actions. LangGraph resumes the same claim thread from its checkpoint, using Postgres when configured. A user reviews a downloadable pack and approves its content hash. If the pack changes, stale approval cannot authorize a new submission. Caregiver authority is checked separately, and withdrawal clears the approval." },
+        { kicker: "Submission recovery", title: "An unclear response needs a lookup.", body: "The connected demo looks up a stable client reference before sending the approved pack and uses it as the idempotency key. If the mock payer accepts the claim and the response is lost, the workflow can recover the payer's claim ID by that reference. If the lookup is inconclusive, the case stays unconfirmed until a later check. The manual route exports a PDF or email draft and records the user's filing date without claiming insurer acknowledgement." },
+        { kicker: "Decision and payment", title: "Reported settlement and verified credit are separate states.", body: "The case stores new requests and decisions with their source. Code compares approved amounts and bill lines, and flags gaps that need review. For reimbursement, it checks a bank transfer reference first, then looks for an amount and date match when appropriate. Missing or ambiguous evidence remains visible. The cashless branch tracks the hospital payment and patient share separately." },
+        { kicker: "Validation", title: "Exercise the paths where claims get stuck.", body: "The repository's 6 November 2026 synthetic end-to-end run passed 124 of 127 checks across 13 journeys. It covered stale approval, lost submission responses, duplicate requests, revoked authority and recovery after a restart. Three checks in the insurer-query and deduction-comparison paths remained open in that report. The hosted demo uses mock providers; authenticated case ownership and real integrations are prerequisites for handling real records." },
+      ],
+      stack: ["React", "Vite", "Python", "FastAPI", "LangGraph", "Gemini", "PostgreSQL / Neon", "Vercel", "Render"],
+      links: { live: "https://claimwise-sigma.vercel.app/", github: "https://github.com/watermelon588/Claimwise" },
+    },
+    {
       slug: "yapchat",
       categories: ["development","backend"],
       title: "Yap Chat",
