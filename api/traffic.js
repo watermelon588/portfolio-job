@@ -1,3 +1,5 @@
+import { site } from "../src/config/site.js";
+
 const visitorId = /^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/;
 
 // Redis executes the whole update atomically, including across concurrent tabs.
@@ -17,16 +19,25 @@ export default {
     if (request.method !== "POST") {
       return new Response(null, { status: 405, headers: { ...headers, Allow: "POST" } });
     }
-    if (request.headers.get("Origin") !== new URL(request.url).origin) {
+    const origin = new URL(request.url).origin;
+    if (request.headers.get("Origin") !== origin) {
       return new Response(null, { status: 403, headers });
     }
 
     const id = request.headers.get("X-Portfolio-Visitor");
     if (!id || !visitorId.test(id)) return new Response(null, { status: 400, headers });
 
-    const { UPSTASH_REDIS_REST_URL: url, UPSTASH_REDIS_REST_TOKEN: token, VERCEL_ENV: environment } = process.env;
-    if (environment !== "production" || !url || !token) {
-      return new Response(null, { status: 204, headers });
+    const { UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN, KV_REST_API_URL, KV_REST_API_TOKEN, VERCEL_ENV } = process.env;
+    const production = VERCEL_ENV ? VERCEL_ENV === "production" : origin === site.origin;
+    if (!production) {
+      return new Response(null, { status: 204, headers: { ...headers, "X-Portfolio-Traffic": "disabled" } });
+    }
+
+    const [url, token] = UPSTASH_REDIS_REST_URL && UPSTASH_REDIS_REST_TOKEN
+      ? [UPSTASH_REDIS_REST_URL, UPSTASH_REDIS_REST_TOKEN]
+      : [KV_REST_API_URL, KV_REST_API_TOKEN];
+    if (!url || !token) {
+      return new Response(null, { status: 204, headers: { ...headers, "X-Portfolio-Traffic": "redis-unconfigured" } });
     }
 
     try {

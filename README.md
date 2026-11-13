@@ -65,7 +65,7 @@ Deploys to Vercel as a Vite project.
 
 All five themes show the same totals at the bottom of the theme switcher menu. A visitor is a browser with a stored random ID. A visit starts on the first portfolio page load or after 30 minutes without another page load. The dice preloader redirects to the first counted page. Clearing site storage or using a different browser creates a new visitor.
 
-To enable the counter, [connect Upstash Redis to the Vercel project](https://upstash.com/docs/redis/howto/vercelintegration). Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` as server-side Production environment variables. Enable access to Vercel's System Environment Variables so the function can use `VERCEL_ENV` to count production traffic only, then redeploy. Counting begins with the first recorded production visit. The totals stay hidden if a page load cannot retrieve them.
+To enable the counter, [connect Upstash Redis to the Vercel project](https://upstash.com/docs/redis/howto/vercelintegration) and redeploy to Production. The counter accepts either the Marketplace's `KV_REST_API_URL` and `KV_REST_API_TOKEN` or Upstash's `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` as server-side Production environment variables. The function uses `VERCEL_ENV` to identify production when available and otherwise checks the production origin in `src/config/site.js`. Counting begins with the first recorded production visit. The totals stay hidden if a page load cannot retrieve them.
 
 ---
 
