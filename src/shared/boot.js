@@ -12,6 +12,7 @@ import { page, currentProject, nextProject, aboutPhotos } from "./data.js";
 import { applyVeils } from "./veil.js";
 import { wireForm } from "./form.js";
 import { wireProjects } from "./projects.js";
+import { wireTraffic } from "./traffic.js";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -111,13 +112,17 @@ function themeSwitcher(key) {
   const el = document.createElement("div");
   el.className = "ts";
   el.innerHTML = `
-    <ul class="ts-menu" id="ts-menu" hidden>
-      ${variants.map((v, i) => `<li><a href="/${v.key}/${file}${location.search}" data-theme="${v.key}"${v.key === key ? ' aria-current="true"' : ""}>${dot(v)}<span class="ts-n">0${i + 1}</span>${v.name}</a></li>`).join("")}
-    </ul>
+    <div class="ts-menu" id="ts-menu" hidden>
+      <ul>
+        ${variants.map((v, i) => `<li><a href="/${v.key}/${file}${location.search}" data-theme="${v.key}"${v.key === key ? ' aria-current="true"' : ""}>${dot(v)}<span class="ts-n">0${i + 1}</span>${v.name}</a></li>`).join("")}
+      </ul>
+      <p class="ts-traffic" hidden></p>
+    </div>
     <button class="ts-btn" type="button" aria-expanded="false" aria-controls="ts-menu">${dot(variants[n])}Theme 0${n + 1} / 0${variants.length}</button>`;
   document.body.append(el);
   const btn = el.querySelector(".ts-btn");
   const menu = el.querySelector(".ts-menu");
+  wireTraffic(menu.querySelector(".ts-traffic"));
   const set = (open) => { menu.hidden = !open; btn.setAttribute("aria-expanded", open); };
   btn.addEventListener("click", () => set(menu.hidden));
   document.addEventListener("click", (e) => !el.contains(e.target) && set(false));

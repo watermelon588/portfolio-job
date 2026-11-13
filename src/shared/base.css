@@ -88,3 +88,12 @@ code { font-family: var(--font-mono); font-size: 0.86em; letter-spacing: 0; }
 .ts-menu a:hover { background: color-mix(in srgb, var(--ink) 7%, transparent); }
 .ts-menu a[aria-current] { background: color-mix(in srgb, var(--ink) 11%, transparent); }
 .ts-n { opacity: 0.5; }
+.ts-traffic {
+  margin: 4px 3px 0;
+  padding: 7px 7px 3px;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+  color: color-mix(in srgb, var(--ink) 72%, var(--bg));
+  font-size: 10px;
+  text-transform: none;
+  letter-spacing: 0;
+}

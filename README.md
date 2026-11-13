@@ -29,7 +29,7 @@ The same content is presented in five different designs. On each visit a die rol
 
 ## Built with
 
-Vite · vanilla JavaScript · GSAP · Lenis. No framework, no backend: every page is a static file.
+Vite · vanilla JavaScript · GSAP · Lenis. The portfolio pages are static, with a Vercel Function for the optional traffic counter.
 
 ## Editing
 
@@ -59,7 +59,13 @@ npm run dev      # http://localhost:5173
 npm run build    # static site in dist/
 ```
 
-Deploys to Vercel as a Vite project, with no configuration and no environment variables.
+Deploys to Vercel as a Vite project.
+
+## Traffic counter
+
+All five themes show the same totals at the bottom of the theme switcher menu. A visitor is a browser with a stored random ID. A visit starts on the first portfolio page load or after 30 minutes without another page load. The dice preloader redirects to the first counted page. Clearing site storage or using a different browser creates a new visitor.
+
+To enable the counter, [connect Upstash Redis to the Vercel project](https://upstash.com/docs/redis/howto/vercelintegration). Set `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` as server-side Production environment variables. Enable access to Vercel's System Environment Variables so the function can use `VERCEL_ENV` to count production traffic only, then redeploy. Counting begins with the first recorded production visit. The totals stay hidden if a page load cannot retrieve them.
 
 ---
 
