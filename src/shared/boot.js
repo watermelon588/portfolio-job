@@ -211,7 +211,8 @@ export const actions = (links = {}, cls = "btn") => {
     href
       ? `<a class="${cls} ${cls}-${kind}" href="${href}" target="_blank" rel="noopener noreferrer"><span>${label}</span><span aria-hidden="true">↗</span></a>`
       : `<span class="${cls} ${cls}-${kind} is-off" aria-disabled="true"><span>${missing}</span></span>`;
-  return `<div class="${cls}s">${one(links.live, b.live, b.liveMissing, "live")}${one(links.github, b.github, b.githubMissing, "code")}</div>`;
+  const sponsor = links.sponsor ? `<a class="sponsor-link" href="${links.sponsor}" target="_blank" rel="noopener noreferrer">♥ Sponsor</a>` : "";
+  return `<div class="${cls}s">${one(links.live, b.live, b.liveMissing, "live")}${one(links.github, b.github, b.githubMissing, "code")}${sponsor}</div>`;
 };
 
 /** <figure> + <img> with lazy loading. `veil` adds the face veil hook. */

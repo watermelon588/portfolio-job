@@ -16,7 +16,7 @@ Third-year B.Tech CSE student (CGPA 9.02) with Python as my strongest suit, buil
 ## Projects
 
 ### Walkthru — AI agent platform for launch-readiness testing
-*Python · FastAPI · LangGraph · LangSmith · PostgreSQL / Supabase (RLS) · MCP · Chrome MV3 · React 19* — [GitHub](https://github.com/watermelon588/Walkthru)
+*Python · FastAPI · LangGraph · LangSmith · PostgreSQL / Supabase (RLS) · MCP · Chrome MV3 · React 19* — [Live](https://trywalkthru.com) · [GitHub](https://github.com/watermelon588/Walkthru)
 
 - Built a LangGraph persona agent that runs real user journeys inside the user's own Chrome via a stateless FastAPI API: one HTTP call per step using `interrupt()` / `Command(resume)` with a Postgres checkpointer, so the API scales horizontally.
 - Enforced safety in code, not prompts: a server-side gate re-checked at every step replaces hallucinated elements and safe-stops pay/delete actions; an SSRF-safe fetcher resolves each host once, blocks private/metadata ranges, pins the connection and re-validates every redirect.

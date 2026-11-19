@@ -97,3 +97,7 @@ code { font-family: var(--font-mono); font-size: 0.86em; letter-spacing: 0; }
   text-transform: none;
   letter-spacing: 0;
 }
+
+/* ---------- small sponsor link beside a case's buttons ---------- */
+.btns .sponsor-link { align-self: center; padding: 0 4px; font-size: 12px; color: var(--muted, currentColor); text-decoration: underline; text-underline-offset: 4px; }
+.btns .sponsor-link:hover { color: var(--ink); }

@@ -293,6 +293,43 @@ export const content = {
       links: { live: "https://claimwise-sigma.vercel.app/", github: "https://github.com/watermelon588/Claimwise" },
     },
     {
+      slug: "agentpeeps",
+      categories: ["ai", "development"],
+      title: "Agent Peeps",
+      year: "2026",
+      role: "Open-source agent observability",
+      tagline: "A tiny sticker for every AI coding agent, live on your screen.",
+      summary:
+        "An open-source npm CLI and Electron overlay that shows what Claude Code, Codex, Copilot and Antigravity sessions and their subagents are doing. Agent hooks append to a local JSONL event log that the overlay, terminal view and VS Code extension tail. No server, no account, no network.",
+      overview:
+        "Run three coding agents at once and it's hard to tell which one is editing which file, which is still thinking and which is waiting for your permission. Agent Peeps gives every session a small floating sticker, a smaller one for each subagent, and an icon for its state: reading, writing, running, done or needs you. It listens to the agents' own hooks rather than an editor, so it works across the CLI, desktop apps and IDEs.",
+      status: "Published on npm as agentpeeps (v0.1.1, MIT). The VS Code extension builds from source until it is listed on the Marketplace and Open VSX.",
+      metrics: [
+        { value: "4", label: "coding agents supported via their hooks" },
+        { value: "9", label: "agent states tracked" },
+        { value: "15", label: "built-in sticker packs" },
+        { value: "0", label: "network calls: local only" },
+      ],
+      highlights: [
+        "One emitter for four agents: Claude Code, Codex, Copilot and Antigravity hooks each append one normalized JSON line (agent, session, subagent, state, file)",
+        "The hook never blocks or fails an agent: it runs async where allowed, swallows errors, always exits 0 and never registers a permission-deciding hook",
+        "Append-only events.jsonl rotates at 5 MB; readers tail it by byte offset, replay the last 64 KB on start and detect rotation when the file shrinks",
+        "Transparent, always-on-top Electron window that passes clicks through everywhere except the stickers",
+        "init detects installed agents, backs up each config file and merges hooks; uninstall removes only its own entries",
+        "Three readers over one log: the overlay, a redraw-in-place terminal view and a VS Code extension with Explorer badges",
+      ],
+      sections: [
+        { kicker: "The problem", title: "Several agents, no shared status.", body: "Claude Code, Codex, Copilot and Antigravity each report progress in their own window. Once a few sessions and their subagents are running, it's easy to miss the one waiting for permission. Agent Peeps puts a small sticker per session in the corner of the screen. Hover it to see the file it's on, its recent files and its stats; a bubble opens by itself when an agent needs you." },
+        { kicker: "Architecture", title: "Hooks in, one log, several readers.", body: "Each agent's hooks call agentpeeps emit, which reads the hook JSON on stdin, normalizes it to one of nine states and appends a line to ~/.agent-presence/events.jsonl. The Electron overlay, the agentpeeps watch terminal view and the VS Code extension read the same file. Nothing leaves the machine: there is no server, no account and no network call." },
+        { kicker: "Never in the way", title: "An observer must not slow the thing it watches.", body: "The emitter always exits 0 and swallows its own errors (AGENT_PRESENCE_DEBUG=1 shows them). Hooks run async where the agent supports it, Codex gets a five-second timeout, and no hook whose output decides permissions is ever registered. Copilot and Antigravity hooks can't run in the background, so Agent Peeps listens only to events that can't hold the agent up." },
+        { kicker: "Event log", title: "Tail by offset, survive rotation.", body: "The log rotates to events.jsonl.old past 5 MB. Readers keep a byte offset and read only what was appended. On start the overlay replays the last 64 KB so open sessions reappear, and if the file is smaller than the saved offset it treats that as a rotation and starts from zero. Partial lines are held until the newline arrives." },
+        { kicker: "Overlay", title: "Above everything, in front of nothing.", body: "A frameless, transparent, always-on-top window covers the work area and ignores mouse events except over a sticker, so clicks reach the editor underneath. A tray icon, a control room and global shortcuts change size, motion, bubbles and per-agent stickers. Settings live in config.json, which the overlay watches, so edits from the CLI, an agent or VS Code apply live." },
+        { kicker: "Install & distribution", title: "One command, reversible.", body: "npx agentpeeps init finds the supported agents, keeps a backup of each config file and merges its hooks. Because npx runs from a cache that can be cleared, init installs a permanent copy into ~/.agent-presence/app and points the hooks there. uninstall removes only its own entries. Plugins for Claude Code and Codex install the same hooks plus a skill that lets an agent pick its own stickers." },
+      ],
+      stack: ["Node.js", "Electron", "JSONL event log", "Claude Code hooks", "Codex hooks", "VS Code API", "npm"],
+      links: { live: "https://www.agentpeeps.space", github: "https://github.com/watermelon588/agentpeeps", sponsor: "https://www.agentpeeps.space/#sponsor" },
+    },
+    {
       slug: "yapchat",
       categories: ["development","backend"],
       title: "Yap Chat",

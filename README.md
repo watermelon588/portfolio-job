@@ -22,7 +22,7 @@ The same content is presented in five different designs. On each visit a die rol
 ## What's inside
 
 - **Featured work:** Walkthru, TripVerse, SkyGuide AI, Neuron and Claimwise appear on each homepage, with a link to the complete collection.
-- **Projects:** a dedicated, filterable catalog in all five themes. It includes the featured projects, plus Yap Chat, Scribb, KOE, Shiori and Forcaster. Categories cover AI, ML & search, Full-stack and Backend. Every project has an engineering case study, repository links and live links where available.
+- **Projects:** a dedicated, filterable catalog in all five themes. It includes the featured projects, plus Agent Peeps, Yap Chat, Scribb, KOE, Shiori and Forcaster. Categories cover AI, ML & search, Full-stack and Backend. Every project has an engineering case study, repository links and live links where available.
 - **Writing:** my articles on Hashnode.
 - **About:** who I am, how I work, and what I'm currently going deep on.
 - **Contact:** email, socials, résumé and a message form.

@@ -32,7 +32,7 @@ function projectRow(w, index) {
       <p class="catalog-role">${w.role}</p>
       <p class="catalog-summary">${w.summary}</p>
       <p class="catalog-stack">${w.stack.slice(0, 5).join(" / ")}</p>
-      <div class="catalog-actions"><a href="${href}">Read case study ↗</a>${w.links.live ? `<a href="${w.links.live}" target="_blank" rel="noopener noreferrer">Live site ↗</a>` : ""}</div>
+      <div class="catalog-actions"><a href="${href}">Read case study ↗</a>${w.links.live ? `<a href="${w.links.live}" target="_blank" rel="noopener noreferrer">Live site ↗</a>` : ""}${w.links.sponsor ? `<a class="sponsor-link" href="${w.links.sponsor}" target="_blank" rel="noopener noreferrer">♥ Sponsor</a>` : ""}</div>
     </article>
   </li>`;
 }
