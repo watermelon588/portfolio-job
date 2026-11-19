@@ -199,7 +199,7 @@ const pages = {
 
     <section class="work">
       <p class="label mono" data-reveal>(Writing)</p>
-      <ol>${c.writing.map((b, i) => indexRow({ n: pad(i), title: `Absurd JavaScript, part ${i + 1}`, aside: b.topic, right: `${b.date} · ${b.read}`, href: b.url })).join("")}</ol>
+      <ol>${c.writing.map((b, i) => indexRow({ n: pad(i), title: b.part ? `Absurd JavaScript, part ${b.part}` : b.short, aside: b.topic, right: `${b.date} · ${b.read}`, href: b.url })).join("")}</ol>
     </section>`,
 
   contact: ({ c }) => `

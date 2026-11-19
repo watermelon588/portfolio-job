@@ -189,7 +189,7 @@ const pages = {
 
     <section class="work">
       <p class="label mono center" data-reveal>Writing</p>
-      ${bandList(c.writing.map((b, i) => ({ href: b.url, meta: `${b.topic} · ${b.read}`, title: `Absurd JS — Part ${i + 1}`, aside: b.date })))}
+      ${bandList(c.writing.map((b, i) => ({ href: b.url, meta: `${b.topic} · ${b.read}`, title: b.part ? `Absurd JS — Part ${b.part}` : b.short, aside: b.date })))}
     </section>
     `,
 

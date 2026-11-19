@@ -72,6 +72,7 @@ export async function boot(key, render, after) {
   wireForm();
   startClocks();
   playClipsInView();
+  npmDownloads();
   pageFades();
   after?.(ctx);
   if (location.hash) requestAnimationFrame(() => ctx.lenis?.scrollTo(location.hash, { immediate: true }));
@@ -223,6 +224,19 @@ export const fig = (src, { cls = "", alt = "", veil = false, attrs = "" } = {}) 
     : /\.mp4$/i.test(src)
       ? `<figure class="m ${cls}" ${attrs}><video src="${src}" muted loop playsinline controls preload="metadata"${alt ? ` aria-label="${alt}"` : ""}></video></figure>`
       : `<figure class="m ${cls}" ${attrs}><img src="${src}" alt="${alt}" loading="lazy" decoding="async"${veil ? " data-veil" : ""} /></figure>`;
+
+/** <span data-npm="pkg" data-since="YYYY-MM-DD"> shows the package's total npm downloads, fetched live. */
+function npmDownloads() {
+  document.querySelectorAll("[data-npm]").forEach(async (el) => {
+    try {
+      const today = new Date().toISOString().slice(0, 10);
+      // ponytail: npm caps one range at 18 months; sum yearly ranges once the package is older than that.
+      const res = await fetch(`https://api.npmjs.org/downloads/point/${el.dataset.since}:${today}/${el.dataset.npm}`);
+      const { downloads } = await res.json();
+      if (Number.isFinite(downloads)) el.textContent = downloads.toLocaleString("en-US");
+    } catch {} // keep the static fallback
+  });
+}
 
 /** Case clips play only while on screen (and never on reduced motion). */
 function playClipsInView() {

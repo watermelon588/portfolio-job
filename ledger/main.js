@@ -183,7 +183,7 @@ const pages = {
 
     <p class="label section-label">Writing</p>
     <ol class="ledger">
-      ${c.writing.map((b, i) => row({ title: `Part ${i + 1}`, kicker: `(${b.date} · ${b.read})`, label: b.topic, href: b.url, size: "md" })).join("")}
+      ${c.writing.map((b, i) => row({ title: b.part ? `Part ${b.part}` : b.short, kicker: `(${b.date} · ${b.read})`, label: b.topic, href: b.url, size: "md" })).join("")}
     </ol>`,
 
   contact: ({ c }) => `

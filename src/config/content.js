@@ -307,8 +307,9 @@ export const content = {
       metrics: [
         { value: "4", label: "coding agents supported via their hooks" },
         { value: "9", label: "agent states tracked" },
+        // Filled live from npm's downloads API; "440+" (the count on 19 Nov 2026) shows if npm is unreachable.
+        { value: '<span data-npm="agentpeeps" data-since="2026-11-16">440+</span>', label: "npm downloads, live" },
         { value: "210", label: "stickers across 15 packs" },
-        { value: "0", label: "network calls: local only" },
       ],
       highlights: [
         "One emitter for four agents: Claude Code, Codex, Copilot and Antigravity hooks each append one normalized JSON line (agent, session, subagent, state, file)",
@@ -602,9 +603,10 @@ export const content = {
   ],
 
   writing: [
-    { title: "Why does JavaScript feel so absurd? — Part 1", date: "Sep 2026", read: "11 min", topic: "Type coercion & IEEE 754", url: "https://zaxx-blog.hashnode.dev/why-does-javascript-feel-so-absurd-part-1" },
-    { title: "Why does JavaScript feel so absurd? — Part 2", date: "Sep 2026", read: "11 min", topic: "Functions, scope & composition", url: "https://zaxx-blog.hashnode.dev/why-does-javascript-feel-so-absurd-part-2" },
-    { title: "Why does JavaScript feel so absurd? — Part 3", date: "Sep 2026", read: "12 min", topic: "Closures, TDZ & this", url: "https://zaxx-blog.hashnode.dev/why-does-javascript-feel-so-absurd-part-3" },
+    { title: "How I built the harness around a claim-policy AI agent in 3 days from scratch", date: "Nov 2026", read: "17 min", topic: "Agent harnesses & Claimwise", short: "The Claimwise agent harness", url: "https://zaxx-blog.hashnode.dev/how-i-built-the-harness-around-a-claim-policy-ai-agent-in-3-days-from-scratch" },
+    { title: "Why does JavaScript feel so absurd? — Part 1", part: 1, date: "Sep 2026", read: "11 min", topic: "Type coercion & IEEE 754", url: "https://zaxx-blog.hashnode.dev/why-does-javascript-feel-so-absurd-part-1" },
+    { title: "Why does JavaScript feel so absurd? — Part 2", part: 2, date: "Sep 2026", read: "11 min", topic: "Functions, scope & composition", url: "https://zaxx-blog.hashnode.dev/why-does-javascript-feel-so-absurd-part-2" },
+    { title: "Why does JavaScript feel so absurd? — Part 3", part: 3, date: "Sep 2026", read: "12 min", topic: "Closures, TDZ & this", url: "https://zaxx-blog.hashnode.dev/why-does-javascript-feel-so-absurd-part-3" },
   ],
 
   socials: [
