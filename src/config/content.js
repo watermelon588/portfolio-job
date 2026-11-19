@@ -303,11 +303,11 @@ export const content = {
         "An open-source npm CLI and Electron overlay that shows what Claude Code, Codex, Copilot and Antigravity sessions and their subagents are doing. Agent hooks append to a local JSONL event log that the overlay, terminal view and VS Code extension tail. No server, no account, no network.",
       overview:
         "Run three coding agents at once and it's hard to tell which one is editing which file, which is still thinking and which is waiting for your permission. Agent Peeps gives every session a small floating sticker, a smaller one for each subagent, and an icon for its state: reading, writing, running, done or needs you. It listens to the agents' own hooks rather than an editor, so it works across the CLI, desktop apps and IDEs.",
-      status: "Published on npm as agentpeeps (v0.1.1, MIT). The VS Code extension builds from source until it is listed on the Marketplace and Open VSX.",
+      status: "Live at agentpeeps.space and published on npm as agentpeeps (v0.1.1, MIT). The site shows npm's live install count under the hero. The VS Code extension builds from source until it is listed on the Marketplace and Open VSX.",
       metrics: [
         { value: "4", label: "coding agents supported via their hooks" },
         { value: "9", label: "agent states tracked" },
-        { value: "15", label: "built-in sticker packs" },
+        { value: "210", label: "stickers across 15 packs" },
         { value: "0", label: "network calls: local only" },
       ],
       highlights: [
@@ -325,6 +325,7 @@ export const content = {
         { kicker: "Event log", title: "Tail by offset, survive rotation.", body: "The log rotates to events.jsonl.old past 5 MB. Readers keep a byte offset and read only what was appended. On start the overlay replays the last 64 KB so open sessions reappear, and if the file is smaller than the saved offset it treats that as a rotation and starts from zero. Partial lines are held until the newline arrives." },
         { kicker: "Overlay", title: "Above everything, in front of nothing.", body: "A frameless, transparent, always-on-top window covers the work area and ignores mouse events except over a sticker, so clicks reach the editor underneath. A tray icon, a control room and global shortcuts change size, motion, bubbles and per-agent stickers. Settings live in config.json, which the overlay watches, so edits from the CLI, an agent or VS Code apply live." },
         { kicker: "Install & distribution", title: "One command, reversible.", body: "npx agentpeeps init finds the supported agents, keeps a backup of each config file and merges its hooks. Because npx runs from a cache that can be cleared, init installs a permanent copy into ~/.agent-presence/app and points the hooks there. uninstall removes only its own entries. Plugins for Claude Code and Codex install the same hooks plus a skill that lets an agent pick its own stickers." },
+        { kicker: "The website", title: "Try the stickers before installing anything.", body: "agentpeeps.space puts working stickers in the hero: drag them around and each one shows a state such as writing auth.ts or needs you. Three short clips cover installing, picking a pack and asking an agent to change its own sticker. A side-by-side compares four terminals with and without Agent Peeps, a settings panel previews the control room, and the sticker shop lists all 15 packs with copyable set commands and a whole-pack zip download. The install count comes straight from npm's downloads API and hides itself if npm doesn't answer." },
       ],
       stack: ["Node.js", "Electron", "JSONL event log", "Claude Code hooks", "Codex hooks", "VS Code API", "npm"],
       links: { live: "https://www.agentpeeps.space", github: "https://github.com/watermelon588/agentpeeps", sponsor: "https://www.agentpeeps.space/#sponsor" },

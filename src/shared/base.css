@@ -76,6 +76,7 @@ code { font-family: var(--font-mono); font-size: 0.86em; letter-spacing: 0; }
 
 /* Case pages: tall posters never exceed the viewport; they centre instead. */
 .p-work .m img { width: auto; max-width: 100%; max-height: 92vh; margin-inline: auto; }
+.m video { display: block; width: 100%; height: auto; max-height: 92vh; background: #000; }
 
 /* ---------- global theme switcher (injected by boot.js) ---------- */
 .ts { position: fixed; right: 16px; bottom: 16px; z-index: 60; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; }

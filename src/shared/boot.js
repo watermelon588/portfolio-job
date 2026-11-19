@@ -71,6 +71,7 @@ export async function boot(key, render, after) {
   wireProjects(ctx);
   wireForm();
   startClocks();
+  playClipsInView();
   pageFades();
   after?.(ctx);
   if (location.hash) requestAnimationFrame(() => ctx.lenis?.scrollTo(location.hash, { immediate: true }));
@@ -217,6 +218,17 @@ export const actions = (links = {}, cls = "btn") => {
 
 /** <figure> + <img> with lazy loading. `veil` adds the face veil hook. */
 export const fig = (src, { cls = "", alt = "", veil = false, attrs = "" } = {}) =>
-  src
-    ? `<figure class="m ${cls}" ${attrs}><img src="${src}" alt="${alt}" loading="lazy" decoding="async"${veil ? " data-veil" : ""} /></figure>`
-    : "";
+  !src
+    ? ""
+    : /\.mp4$/i.test(src)
+      ? `<figure class="m ${cls}" ${attrs}><video src="${src}" muted loop playsinline controls preload="metadata"${alt ? ` aria-label="${alt}"` : ""}></video></figure>`
+      : `<figure class="m ${cls}" ${attrs}><img src="${src}" alt="${alt}" loading="lazy" decoding="async"${veil ? " data-veil" : ""} /></figure>`;
+
+/** Case clips play only while on screen (and never on reduced motion). */
+function playClipsInView() {
+  const videos = document.querySelectorAll(".m video");
+  if (!videos.length || reduced) return;
+  const io = new IntersectionObserver((entries) =>
+    entries.forEach(({ target, isIntersecting }) => (isIntersecting ? target.play().catch(() => {}) : target.pause())), { threshold: 0.4 });
+  videos.forEach((v) => io.observe(v));
+}
