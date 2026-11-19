@@ -22,12 +22,14 @@ import profile from "../../site-assets/portraits/profile.png";
 export const images = { profile };
 
 /** WebP as-is; PNG/JPG converted at build time. Returns { path: url }. */
-const pick = (webp, other) => ({ ...webp, ...other });
+const pick = (...globs) => Object.assign({}, ...globs);
 
 /* ---------- per-theme folders ---------- */
 const files = pick(
   import.meta.glob("../../site-assets/variants/*/*/*.webp", { eager: true, import: "default" }),
-  import.meta.glob("../../site-assets/variants/*/*/*.{png,jpg,jpeg,PNG,JPG,JPEG}", { eager: true, import: "default", query: "?w=1600&format=webp" })
+  import.meta.glob("../../site-assets/variants/*/*/*.{png,jpg,jpeg,PNG,JPG,JPEG}", { eager: true, import: "default", query: "?w=1600&format=webp" }),
+  // Case-page clips: an .mp4 in a project folder renders as a muted, looping video.
+  import.meta.glob("../../site-assets/variants/*/*/*.mp4", { eager: true, import: "default" })
 );
 
 const media = {};
