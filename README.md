@@ -4,6 +4,8 @@ A quiet, text-led portfolio. It's where I present my work to myself and to anyon
 
 I'm a backend & AI engineer (Python, FastAPI, Node.js, LangGraph). The site is deliberately minimal so the work does the talking: light type, greys plus one accent colour, a few images, and subtle motion.
 
+**Live:** [portfolio2-mu-inky.vercel.app](https://portfolio2-mu-inky.vercel.app) · **Repo:** [watermelon588/portfolio-job](https://github.com/watermelon588/portfolio-job)
+
 ![The dice preloader landing on a theme](docs/screens/dice.webp)
 
 ## Five themes, one portfolio
@@ -16,20 +18,26 @@ The same content is presented in five different designs. On each visit a die rol
 | **01 · Paper**: Swiss, lowercase, hairlines | **02 · Ledger**: condensed type, project ledger |
 | ![Signal](docs/screens/signal.webp) | ![Blueprint](docs/screens/blueprint.webp) |
 | **03 · Signal**: dark, centred, one orange accent | **04 · Blueprint**: an all-blue CV layout |
-| ![Dial](docs/screens/dial.webp) | ![A case study page](docs/screens/case.webp) |
-| **05 · Dial**: serif and editorial | **Case pages**: the engineering behind each project |
+| ![Dial](docs/screens/dial.webp) | ![The Projects catalog](docs/screens/projects.webp) |
+| **05 · Dial**: serif and editorial | **Projects**: the filterable catalog, in every theme |
+
+![The Agent Peeps case study in Signal](docs/screens/case.webp)
+
+**Case pages** carry the engineering behind each project: architecture, the hard problems, numbers backed by the repository, screenshots and demo clips.
+
+Screenshots taken 19 November 2026 at 1440 × 900.
 
 ## What's inside
 
 - **Featured work:** Walkthru, TripVerse, SkyGuide AI, Neuron and Claimwise appear on each homepage, with a link to the complete collection.
-- **Projects:** a dedicated, filterable catalog in all five themes. It includes the featured projects, plus Agent Peeps, Yap Chat, Scribb, KOE, Shiori and Forcaster. Categories cover AI, ML & search, Full-stack and Backend. Every project has an engineering case study, repository links and live links where available.
-- **Writing:** my articles on Hashnode.
+- **Projects:** a dedicated, filterable catalog of all 11 projects in all five themes. It includes the featured projects, plus Agent Peeps, Yap Chat, Scribb, KOE, Shiori and Forcaster. Categories cover AI, ML & search, Full-stack and Backend. Every project has an engineering case study, repository links and live links where available.
+- **Writing:** my articles on [Hashnode](https://zaxx-blog.hashnode.dev): [How I built the harness around a claim-policy AI agent in 3 days](https://zaxx-blog.hashnode.dev/how-i-built-the-harness-around-a-claim-policy-ai-agent-in-3-days-from-scratch) (the Claimwise agent) and the three-part *Why does JavaScript feel so absurd?* series.
 - **About:** who I am, how I work, and what I'm currently going deep on.
 - **Contact:** email, socials, résumé and a message form.
 
 ## Built with
 
-Vite · vanilla JavaScript · GSAP · Lenis. The portfolio pages are static, with a Vercel Function for the optional traffic counter.
+Vite · vanilla JavaScript · GSAP · Lenis · vite-imagetools. The portfolio pages are static, with one Vercel Function (`api/traffic.js`) for the optional traffic counter.
 
 ## Editing
 
@@ -39,7 +47,7 @@ Everything is driven from three places, so changing the site rarely means touchi
 |---|---|
 | Any text: hero, projects, about, writing, contact | `src/config/content.js` |
 | Colours, fonts, portrait and its filter per theme | `src/config/theme.js` |
-| Images and the résumé | `site-assets/` (folders are picked up automatically, in filename order) |
+| Images, demo clips and the résumé | `site-assets/` (folders are picked up automatically, in filename order) |
 
 All five themes use the same profile photo from `site-assets/portraits/profile.png`. Replace that file to update the portrait everywhere; each theme keeps its own portrait size and visual treatment from `src/config/theme.js`.
 
@@ -49,7 +57,15 @@ Open Graph and X card metadata are emitted into every page's HTML by `vite.confi
 
 Projects live at `/<theme>/projects.html`; case studies remain at `/<theme>/work.html?p=<slug>`. Catalog filters use `?category=ai`, `ml`, `development` or `backend`, survive refresh/back navigation and follow theme switching. Case pages include a category filter and project chooser.
 
-To add a project, create a record in `content.work` with a unique `slug`, `sections`, `categories` and links, then add a shared thumbnail in `site-assets/thumbnails/<slug>.webp` and case images under each `site-assets/variants/<theme>/<slug>/`. Categories may overlap. New entries automatically join the catalog, filter counts, case chooser and next-project chain. The homepage selects the first five records in the array; reorder that array to change featured work.
+To add a project, create a record in `content.work` with a unique `slug`, `sections`, `categories` and links, then add a shared thumbnail in `site-assets/thumbnails/<slug>.webp` and case media under each `site-assets/variants/<theme>/<slug>/`. Categories may overlap. New entries automatically join the catalog, filter counts, case chooser and next-project chain. The homepage selects the first five records in the array; reorder that array to change featured work. Source notes for the newer case studies are in `docs/projects/`.
+
+Project options:
+
+- **Case media:** the first file in a project folder is the cover. WebP is served as-is, PNG/JPG are converted to WebP at build time, and `.mp4` files render as muted, looping clips with controls that play only while on screen.
+- **Links:** `links.live` and `links.github` become the case-page buttons. `links.sponsor` adds a small *Sponsor* link beside them and in the catalog row.
+- **Live npm count:** a metric value of `<span data-npm="<package>" data-since="YYYY-MM-DD">fallback</span>` is replaced with the package's total npm downloads, fetched in the browser from npm's downloads API. The fallback stays if npm doesn't answer. Agent Peeps uses this.
+
+Writing entries take `title`, `date`, `read`, `topic` and `url`. Signal, Ledger and Dial show short labels: series posts set `part` (*Absurd JS — Part 2*), other posts set `short`.
 
 ## Run it
 
@@ -69,4 +85,4 @@ To enable the counter, [connect Upstash Redis to the Vercel project](https://ups
 
 ---
 
-© 2026 Rohit Maity · [GitHub](https://github.com/watermelon588) · [LinkedIn](https://www.linkedin.com/in/maity-rohit) · maityrohit021@gmail.com
+© 2026 Rohit Maity · [GitHub](https://github.com/watermelon588) · [LinkedIn](https://www.linkedin.com/in/maity-rohit) · [X](https://x.com/turquoise_0904) · [Hashnode](https://hashnode.com/@zaxx) · maityrohit021@gmail.com
